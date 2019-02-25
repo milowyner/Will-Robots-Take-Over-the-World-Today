@@ -41,6 +41,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="gradientView" destination="imW-gV-sU4" id="OxD-qV-JVg"/>
                     </connections>

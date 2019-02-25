@@ -12,6 +12,7 @@
 		0523FCB42223395000EFC49C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0523FCB22223395000EFC49C /* Main.storyboard */; };
 		0523FCB62223395100EFC49C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0523FCB52223395100EFC49C /* Assets.xcassets */; };
 		0523FCB92223395100EFC49C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0523FCB72223395100EFC49C /* LaunchScreen.storyboard */; };
+		0523FCC1222342CC00EFC49C /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523FCC0222342CC00EFC49C /* GradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		0523FCB52223395100EFC49C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0523FCB82223395100EFC49C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0523FCBA2223395100EFC49C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0523FCC0222342CC00EFC49C /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				0523FCAE2223395000EFC49C /* AppDelegate.swift */,
 				0523FCB02223395000EFC49C /* ViewController.swift */,
+				0523FCC0222342CC00EFC49C /* GradientView.swift */,
 				0523FCB22223395000EFC49C /* Main.storyboard */,
 				0523FCB52223395100EFC49C /* Assets.xcassets */,
 				0523FCB72223395100EFC49C /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			files = (
 				0523FCB12223395000EFC49C /* ViewController.swift in Sources */,
 				0523FCAF2223395000EFC49C /* AppDelegate.swift in Sources */,
+				0523FCC1222342CC00EFC49C /* GradientView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,21 +10,18 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    // Layer for applying gradient
-    var gradientLayer: CAGradientLayer!
+    @IBOutlet weak var gradientView: GradientView!
     
     // Light and dark colors used for background gradient
-    var lightColor = UIColor(named: "clearDayLight")!.cgColor
-    var darkColor = UIColor(named: "clearDayDark")!.cgColor
+    var lightColor = UIColor(named: "clearDayLight")!
+    var darkColor = UIColor(named: "clearDayDark")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Apply gradient to background
-        gradientLayer = CAGradientLayer()
-        gradientLayer.frame = self.view.bounds
-        gradientLayer.colors = [lightColor, darkColor]
-        self.view.layer.addSublayer(gradientLayer)
+        // Set colors for gradient view
+        gradientView.firstColor = lightColor
+        gradientView.secondColor = darkColor
     }
 
 

@@ -13,6 +13,7 @@
 		0523FCB62223395100EFC49C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0523FCB52223395100EFC49C /* Assets.xcassets */; };
 		0523FCB92223395100EFC49C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0523FCB72223395100EFC49C /* LaunchScreen.storyboard */; };
 		0523FCC1222342CC00EFC49C /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523FCC0222342CC00EFC49C /* GradientView.swift */; };
+		05B4CFB42227C4360089BCC2 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05B4CFB32227C4360089BCC2 /* Cabin-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		0523FCB82223395100EFC49C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0523FCBA2223395100EFC49C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0523FCC0222342CC00EFC49C /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		05B4CFB32227C4360089BCC2 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +65,17 @@
 				0523FCB52223395100EFC49C /* Assets.xcassets */,
 				0523FCB72223395100EFC49C /* LaunchScreen.storyboard */,
 				0523FCBA2223395100EFC49C /* Info.plist */,
+				05B4CFB22227C3E30089BCC2 /* Fonts */,
 			);
 			path = "Will Robots Take Over the World?";
+			sourceTree = "<group>";
+		};
+		05B4CFB22227C3E30089BCC2 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				05B4CFB32227C4360089BCC2 /* Cabin-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0523FCB92223395100EFC49C /* LaunchScreen.storyboard in Resources */,
+				05B4CFB42227C4360089BCC2 /* Cabin-Regular.ttf in Resources */,
 				0523FCB62223395100EFC49C /* Assets.xcassets in Resources */,
 				0523FCB42223395000EFC49C /* Main.storyboard in Resources */,
 			);
@@ -296,7 +308,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.milowyner.Will-Robots-Take-Over-the-World-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -314,7 +326,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.milowyner.Will-Robots-Take-Over-the-World-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

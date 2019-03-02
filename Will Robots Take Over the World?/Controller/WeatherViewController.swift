@@ -41,6 +41,8 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         return "https://api.darksky.net/forecast/\(apiKey)/\(coordinates)?units=auto&exclude=minutely,hourly,daily,alerts"
     }
     
+    let manager = NetworkReachabilityManager(host: "api.darksky.net")
+    
     // Weather data
     var weatherData = WeatherData()
     
@@ -55,6 +57,16 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         
         // Get current location
         enableBasicLocationServices()
+        
+        
+        manager?.listener = { status in
+            print("Network Status Changed: \(status)")
+            if status != NetworkReachabilityManager.NetworkReachabilityStatus.notReachable {
+                self.enableBasicLocationServices()
+            }
+        }
+        
+        manager?.startListening()
     }
     
     // MARK: Location Services

@@ -227,7 +227,6 @@
                     </view>
                     <connections>
                         <outlet property="gradientView" destination="imW-gV-sU4" id="OxD-qV-JVg"/>
-                        <outlet property="temperatureLabel" destination="L3y-Iv-ROQ" id="3IM-Ok-hPj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

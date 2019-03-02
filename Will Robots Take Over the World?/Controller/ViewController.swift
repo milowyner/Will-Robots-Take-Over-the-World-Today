@@ -62,8 +62,11 @@ class ViewController: UIViewController {
         let units = json["flags"]["units"]
         print("UNITS: \(units)")
         
-        weatherData.temperature = current["temperature"].double
         weatherData.summary = current["summary"].stringValue
+        weatherData.temperature = current["temperature"].double
+        weatherData.windSpeed = current["windSpeed"].double
+        weatherData.apparentTemperature = current["apparentTemperature"].double
+        weatherData.nearestStorm = current["nearestStormDistance"].double
         
         print(weatherData)
     }
@@ -79,6 +82,16 @@ class ViewController: UIViewController {
         
         if let apparentTemperature = weatherData.apparentTemperature {
             apparentTemperatureLabel.text = "\(Int(apparentTemperature.rounded()))º"
+        }
+        
+        if let windSpeed = weatherData.windSpeed {
+            let unit = "mph"
+            windSpeedLabel.text = "\(Int(windSpeed.rounded())) \(unit)"
+        }
+        
+        if let nearestStorm = weatherData.nearestStorm {
+            let unit = "mi"
+            nearestStormLabel.text = "\(Int(nearestStorm.rounded())) \(unit)"
         }
         
     }

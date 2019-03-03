@@ -13,6 +13,15 @@ struct WeatherData {
         case celcius
         case fahrenheit
     }
+    enum SpeedUnit {
+        case milesPerHour
+        case kilometersPerHour
+        case metersPerSecond
+    }
+    enum DistanceUnit {
+        case miles
+        case kilometers
+    }
     
     // Temperature unit; calculates/sets correct temperatures when set
     var temperatureUnit: TemperatureUnit? {
@@ -30,6 +39,9 @@ struct WeatherData {
             }
         }
     }
+    
+    var speedUnit: SpeedUnit?
+    var distanceUnit: DistanceUnit?
     
     var temperature: Double?
     var apparentTemperature: Double?

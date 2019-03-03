@@ -52,8 +52,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("viewDidLoad")
-        
         // Set colors for gradient view
         gradientView.firstColor = lightColor
         gradientView.secondColor = darkColor
@@ -82,7 +80,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    //
     // MARK: Location Services
+    //
     
     func enableBasicLocationServices() {
         locationManager.delegate = self
@@ -94,36 +94,41 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             
         case .restricted, .denied:
             // Disable location features
-            print("location initially denied")
+            print("Location denied")
             
         case .authorizedWhenInUse, .authorizedAlways:
             // Enable location features
             locationManager.startUpdatingLocation()
-            print("location initially authorized")
+            print("Location authorized")
         }
     }
     
+    //
     // MARK: Core Location Delegate Methods
+    //
     
+    // Changed auth status
     func locationManager(_ manager: CLLocationManager,
                          didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .restricted, .denied:
-            print("location denied after changing auth status")
+            print("Location denied after changing auth status")
             
         case .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
-            print("location authorized after changing auth status")
+            print("Location authorized after changing auth status")
             
         case .notDetermined, .authorizedAlways:
-            print("location auth status not determined")
+            print("Location auth status not determined")
         }
     }
     
+    // Location was updated
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last!
-        print("location successful")
         locationManager.stopUpdatingLocation()
+        
+        print("Location successful")
         
         // Update coordinates
         coordinates = "\(location.coordinate.latitude),\(location.coordinate.longitude)"
@@ -140,13 +145,14 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         })
     }
     
+    // Failed to get location
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Could not get location")
-        print(error)
+        print("Could not get location, \(error)")
     }
 
-    
+    //
     // MARK: Networking
+    //
     
     func requestWeatherData() {
         Alamofire.request(url).responseJSON { response in
@@ -163,32 +169,46 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    //
     // MARK: JSON Parsing
+    //
     
     func storeWeatherData(from json: JSON) {
         let current = json["currently"]
         let units = json["flags"]["units"].stringValue
         
+        // Set temperature unit
         switch units {
-        case "us":
-            weatherData.temperatureUnit = .fahrenheit
-        case "si", "ca", "uk2":
-            weatherData.temperatureUnit = .celcius
-        default:
-            print("Unknown units")
-            break
+        case "us": weatherData.temperatureUnit = .fahrenheit
+        case "si", "ca", "uk2": weatherData.temperatureUnit = .celcius
+        default: print("Error, unknown units")
+        }
+        // Set speed unit
+        switch units {
+        case "us", "uk2": weatherData.speedUnit = .milesPerHour
+        case "si": weatherData.speedUnit = .metersPerSecond
+        case "ca": weatherData.speedUnit = .kilometersPerHour
+        default: print("Error, unkown units")
+        }
+        // Set distance unit
+        switch units {
+        case "us", "uk2": weatherData.distanceUnit = .miles
+        case "si", "ca": weatherData.distanceUnit = .kilometers
+        default: print("Error, unkown units")
         }
         
+        // Set weather data
         weatherData.summary = current["summary"].stringValue
         weatherData.temperature = current["temperature"].double
         weatherData.windSpeed = current["windSpeed"].double
         weatherData.apparentTemperature = current["apparentTemperature"].double
         weatherData.nearestStorm = current["nearestStormDistance"].double
         
-        print(weatherData)
     }
     
+    //
     // MARK: Update UI
+    //
     
     func updateUIWithWeatherData() {
         if let temperature = weatherData.temperature {
@@ -204,13 +224,31 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         if let windSpeed = weatherData.windSpeed {
-            let unit = "mph"
-            windSpeedLabel.text = "\(Int(windSpeed.rounded())) \(unit)"
+            var unit: String? = nil
+            if let speedUnit = weatherData.speedUnit {
+                switch speedUnit {
+                case .milesPerHour:
+                    unit = " mph"
+                case .kilometersPerHour:
+                    unit = " kph"
+                case .metersPerSecond:
+                    unit = " m/s"
+                }
+            }
+            windSpeedLabel.text = "\(Int(windSpeed.rounded()))\(unit ?? "")"
         }
         
         if let nearestStorm = weatherData.nearestStorm {
-            let unit = "mi"
-            nearestStormLabel.text = "\(Int(nearestStorm.rounded())) \(unit)"
+            var unit: String? = nil
+            if let distanceUnit = weatherData.distanceUnit {
+                switch distanceUnit {
+                case .kilometers:
+                    unit = " km"
+                case .miles:
+                    unit = " mi"
+                }
+            }
+            nearestStormLabel.text = "\(Int(nearestStorm.rounded()))\(unit ?? "")"
         }
         
         if let temperatureUnit = weatherData.temperatureUnit {

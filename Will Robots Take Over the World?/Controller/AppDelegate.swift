@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         print("enter foreground")
         let weatherVC = window?.rootViewController as! WeatherViewController
-        if weatherVC.manager?.networkReachabilityStatus != NetworkReachabilityManager.NetworkReachabilityStatus.notReachable {
+        if weatherVC.manager?.networkReachabilityStatus != .notReachable {
             weatherVC.enableBasicLocationServices()
         }
     }

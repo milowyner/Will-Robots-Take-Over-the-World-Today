@@ -13,9 +13,21 @@ struct WeatherData {
         case celcius
         case fahrenheit
     }
-    var unit: TemperatureUnit = .fahrenheit {
+    
+    // Temperature unit; calculates/sets correct temperatures when set
+    var temperatureUnit: TemperatureUnit? {
         didSet {
-            // Convert temperatures to new unit
+            if let oldTemperature = temperature, let oldApparentTemperature = apparentTemperature, temperatureUnit != oldValue {
+                // Convert temperatures to new unit
+                switch temperatureUnit! {
+                case .fahrenheit:
+                    temperature = oldTemperature * 9/5 + 32
+                    apparentTemperature = oldApparentTemperature * 9/5 + 32
+                case .celcius:
+                    temperature = (oldTemperature - 32) * 5/9
+                    apparentTemperature = (oldApparentTemperature - 32) * 5/9
+                }
+            }
         }
     }
     

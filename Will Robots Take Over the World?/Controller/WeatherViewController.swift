@@ -19,14 +19,19 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var apparentTemperatureLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var nearestStormLabel: UILabel!
+    @IBOutlet weak var unitToggle: UIButton!
     
+    // Core Location manager for getting device location
     let locationManager = CLLocationManager()
+    
+    // Network manager for checking if network is connected/disconnected
+    let manager = NetworkReachabilityManager(host: "api.darksky.net")
 
     // Light and dark colors used for background gradient
     var lightColor = UIColor(named: "clearDayLight")!
     var darkColor = UIColor(named: "clearDayDark")!
     
-    // Location
+    // Currnet device coordinates
     var coordinates = "" {
         didSet {
             requestWeatherData()
@@ -41,9 +46,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         return "https://api.darksky.net/forecast/\(apiKey)/\(coordinates)?units=auto&exclude=minutely,hourly,daily,alerts"
     }
     
-    let manager = NetworkReachabilityManager(host: "api.darksky.net")
-    
-    // Weather data
+    // Weather data model
     var weatherData = WeatherData()
     
     override func viewDidLoad() {
@@ -58,15 +61,25 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         // Get current location
         enableBasicLocationServices()
         
-        
+        // Enable location services when network is reachable
         manager?.listener = { status in
-            print("Network Status Changed: \(status)")
-            if status != NetworkReachabilityManager.NetworkReachabilityStatus.notReachable {
+            if status != .notReachable {
                 self.enableBasicLocationServices()
             }
         }
-        
         manager?.startListening()
+    }
+    
+    @IBAction func unitTogglePressed(_ sender: UIButton) {
+        if let temperatureUnit = weatherData.temperatureUnit {
+            switch temperatureUnit {
+            case .fahrenheit:
+                weatherData.temperatureUnit = .celcius
+            case .celcius:
+                weatherData.temperatureUnit = .fahrenheit
+            }
+            updateUIWithWeatherData()
+        }
     }
     
     // MARK: Location Services
@@ -154,7 +167,17 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     func storeWeatherData(from json: JSON) {
         let current = json["currently"]
-//        let units = json["flags"]["units"]
+        let units = json["flags"]["units"].stringValue
+        
+        switch units {
+        case "us":
+            weatherData.temperatureUnit = .fahrenheit
+        case "si", "ca", "uk2":
+            weatherData.temperatureUnit = .celcius
+        default:
+            print("Unknown units")
+            break
+        }
         
         weatherData.summary = current["summary"].stringValue
         weatherData.temperature = current["temperature"].double
@@ -162,7 +185,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         weatherData.apparentTemperature = current["apparentTemperature"].double
         weatherData.nearestStorm = current["nearestStormDistance"].double
         
-        //print(current["city"].stringValue)
         print(weatherData)
     }
     
@@ -191,6 +213,26 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             nearestStormLabel.text = "\(Int(nearestStorm.rounded())) \(unit)"
         }
         
+        if let temperatureUnit = weatherData.temperatureUnit {
+            let attributedString = NSMutableAttributedString(string: "Cº/ Fº", attributes: [
+                .font: UIFont(name: "Cabin-Regular", size: 14.0)!,
+                .foregroundColor: UIColor(named: "whiteSubtle")!,
+                .kern: 0.84
+                ])
+            
+            switch temperatureUnit {
+            case .fahrenheit:
+                attributedString.addAttributes([
+                    .foregroundColor: UIColor.white
+                    ], range: NSRange(location: 4, length: 2))
+            case .celcius:
+                attributedString.addAttributes([
+                    .foregroundColor: UIColor.white
+                    ], range: NSRange(location: 0, length: 2))
+            }
+            
+            unitToggle.setAttributedTitle(attributedString, for: .normal)
+        }
     }
     
 }

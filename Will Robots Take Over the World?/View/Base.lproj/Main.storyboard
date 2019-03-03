@@ -53,7 +53,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWh-qp-ewL" userLabel="Summary">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="17.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="24" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
@@ -62,7 +62,7 @@
                                                 <rect key="frame" x="0.0" y="146" width="315" height="49.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="bi1-3k-Cqb" userLabel="Feels Like">
-                                                        <rect key="frame" x="0.0" y="0.0" width="61.5" height="49.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="100.5" height="49.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FEELS LIKE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jsg-7U-l6p">
                                                                 <rect key="frame" x="0.0" y="0.0" width="58" height="15"/>
@@ -79,7 +79,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Oe2-bP-dLI" userLabel="Wind">
-                                                        <rect key="frame" x="69.5" y="0.0" width="114.5" height="49.5"/>
+                                                        <rect key="frame" x="108.5" y="0.0" width="55.5" height="49.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WIND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yb3-mk-0J6">
                                                                 <rect key="frame" x="0.0" y="0.0" width="32" height="15"/>
@@ -87,8 +87,8 @@
                                                                 <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-- mph" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdx-pK-EAW" userLabel="Speed">
-                                                                <rect key="frame" x="0.0" y="15" width="85.5" height="34.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdx-pK-EAW" userLabel="Speed">
+                                                                <rect key="frame" x="0.0" y="15" width="24" height="34.5"/>
                                                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="28"/>
                                                                 <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
@@ -96,16 +96,16 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="K5k-ZN-jjw" userLabel="Nearest Storm">
-                                                        <rect key="frame" x="192" y="0.0" width="123" height="49.5"/>
+                                                        <rect key="frame" x="172" y="0.0" width="143" height="49.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEAREST STORM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="an7-0R-hLS">
-                                                                <rect key="frame" x="0.0" y="0.0" width="92" height="15"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="143" height="15"/>
                                                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="12"/>
                                                                 <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-- mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmd-mI-JL2" userLabel="Distance">
-                                                                <rect key="frame" x="0.0" y="15" width="61" height="34.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmd-mI-JL2" userLabel="Distance">
+                                                                <rect key="frame" x="0.0" y="15" width="24" height="34.5"/>
                                                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="28"/>
                                                                 <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
@@ -138,23 +138,10 @@
                                         <state key="normal" image="icon-utility"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v0r-Xv-KDF" userLabel="Temperature Toggle">
-                                        <rect key="frame" x="291" y="105" width="74" height="47"/>
+                                        <rect key="frame" x="325" y="102.5" width="40" height="52"/>
                                         <inset key="contentEdgeInsets" minX="20" minY="15" maxX="20" maxY="15"/>
                                         <state key="normal">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="Cº/ ">
-                                                    <attributes>
-                                                        <color key="NSColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" size="14" name="Cabin-Regular"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="Fº">
-                                                    <attributes>
-                                                        <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" size="14" name="Cabin-Regular"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
+                                            <attributedString key="attributedTitle"/>
                                         </state>
                                         <connections>
                                             <action selector="unitTogglePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l5I-CN-JM5"/>

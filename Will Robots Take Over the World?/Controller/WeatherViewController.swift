@@ -15,14 +15,19 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var gradientView: GradientView!
     @IBOutlet weak var topBackground: UIImageView!
-    @IBOutlet weak var centerBackground: UIImageView!
+    @IBOutlet weak var centeredBackground: UIImageView!
     @IBOutlet weak var bottomBackground: UIImageView!
+    @IBOutlet weak var fullscreenBackground: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var apparentTemperatureLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var nearestStormLabel: UILabel!
     @IBOutlet weak var unitToggle: UIButton!
+    
+    // Width constraints for centeredBackground view
+    @IBOutlet weak var proportionalCenteredBackgroundConstraint: NSLayoutConstraint!
+    @IBOutlet weak var fullWidthCenteredBackgroundConstraint: NSLayoutConstraint!
     
     // Core Location manager for getting device location
     let locationManager = CLLocationManager()
@@ -53,7 +58,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         
         // Clear background
         topBackground.image = nil
-        centerBackground.image = nil
+        centeredBackground.image = nil
         
         // Get current location
         enableBasicLocationServices()
@@ -203,7 +208,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         weatherData.windSpeed = current["windSpeed"].double
         weatherData.apparentTemperature = current["apparentTemperature"].double
         weatherData.nearestStorm = current["nearestStormDistance"].double
-        
     }
     
     //
@@ -211,11 +215,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     //
     
     func updateUIWithWeatherData() {
-        
-        // JUST FOR TESTING
-        weatherData.icon = "snow"
-        weatherData.summary = "snow"
-
         
         if let temperature = weatherData.temperature {
             temperatureLabel.text = "\(Int(temperature.rounded()))º"
@@ -281,9 +280,14 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         if let icon = weatherData.icon {
             // Clear background images
             topBackground.image = nil
-            centerBackground.image = nil
+            centeredBackground.image = nil
             bottomBackground.image = nil
-
+            fullscreenBackground.image = nil
+            
+            // Reset constraints
+            fullWidthCenteredBackgroundConstraint.isActive = false
+            proportionalCenteredBackgroundConstraint.isActive = true
+            centeredBackground.contentMode = .scaleAspectFill
             
             // Set background based on weather icon
             switch icon {
@@ -295,29 +299,48 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
                 gradientView.firstColor = UIColor(named: "nightLight")
                 gradientView.secondColor = UIColor(named: "nightDark")
                 bottomBackground.image = UIImage(named: "bg-clear")
-            case "rain", "snow", "sleet", "cloudy", "hail", "thunderstorm", "tornado":
+            case "wind":
+                gradientView.firstColor = UIColor(named: "dayLight")
+                gradientView.secondColor = UIColor(named: "dayDark")
+                centeredBackground.image = UIImage(named: "bg-wind")
+                proportionalCenteredBackgroundConstraint.isActive = false
+                fullWidthCenteredBackgroundConstraint.isActive = true
+            case "fog":
+                gradientView.firstColor = UIColor(named: "neutralLight")
+                gradientView.secondColor = UIColor(named: "neutralDark")
+                fullscreenBackground.image = UIImage(named: "bg-fog")
+            case "partly-cloudy-day":
+                gradientView.firstColor = UIColor(named: "dayLight")
+                gradientView.secondColor = UIColor(named: "cloudyDark")
+                topBackground.image = UIImage(named: "bg-partly-cloudy")
+            case "partly-cloudy-night":
+                gradientView.firstColor = UIColor(named: "nightLight")
+                gradientView.secondColor = UIColor(named: "nightDark")
+                topBackground.image = UIImage(named: "bg-partly-cloudy")
+            case "tornado":
+                gradientView.firstColor = UIColor(named: "neutralLight")
+                gradientView.secondColor = UIColor(named: "neutralDark")
+                fullscreenBackground.image = UIImage(named: "bg-tornado")
+            default:
+                // Cloudy, rain, snow, sleet, hail, thunderstorm
                 gradientView.firstColor = UIColor(named: "cloudyLight")
                 gradientView.secondColor = UIColor(named: "cloudyDark")
                 topBackground.image = UIImage(named: "bg-clouds")
+                
                 if icon == "rain" {
-                    centerBackground.image = UIImage(named: "bg-rain")
+                    centeredBackground.image = UIImage(named: "bg-rain")
                 } else if icon == "snow" {
-                    centerBackground.image = UIImage(named: "bg-snow")
+                    centeredBackground.image = UIImage(named: "bg-snow")
                 } else if icon == "sleet" {
-                    centerBackground.image = UIImage(named: "bg-sleet")
+                    centeredBackground.image = UIImage(named: "bg-sleet")
                 } else if icon == "hail" {
-                    centerBackground.image = UIImage(named: "bg-hail")
+                    centeredBackground.image = UIImage(named: "bg-hail")
+                } else if icon == "thunderstorm" {
+                    centeredBackground.image = UIImage(named: "bg-lightning")
+                    centeredBackground.contentMode = .scaleAspectFill
+                    proportionalCenteredBackgroundConstraint.isActive = false
+                    fullWidthCenteredBackgroundConstraint.isActive = true
                 }
-            case "wind":
-                break
-            case "fog":
-                break
-            case "partly-cloudy-day":
-                break
-            case "partly-cloudy-night":
-                break
-            default:
-                break
             }
         }
     }

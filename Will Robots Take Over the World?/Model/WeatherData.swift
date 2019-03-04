@@ -46,6 +46,7 @@ struct WeatherData {
     var temperature: Double?
     var apparentTemperature: Double?
     var summary: String?
+    var icon: String?
     var windSpeed: Double?
     var nearestStorm: Double?
 }

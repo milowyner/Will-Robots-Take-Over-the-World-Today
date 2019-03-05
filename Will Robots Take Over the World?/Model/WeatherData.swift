@@ -49,4 +49,5 @@ struct WeatherData {
     var icon: String?
     var windSpeed: Double?
     var nearestStorm: Double?
+    var moonPhase: Double?
 }

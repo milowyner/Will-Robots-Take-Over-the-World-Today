@@ -13,17 +13,23 @@ import CoreLocation
 
 class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
+    // Background views
     @IBOutlet weak var gradientView: GradientView!
     @IBOutlet weak var topBackground: UIImageView!
     @IBOutlet weak var centeredBackground: UIImageView!
     @IBOutlet weak var bottomBackground: UIImageView!
     @IBOutlet weak var fullscreenBackground: UIImageView!
+    
+    // Weather labels
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var apparentTemperatureLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var nearestStormLabel: UILabel!
+    
+    // Buttons
     @IBOutlet weak var unitToggle: UIButton!
+    @IBOutlet weak var takeOverButtonView: UIStackView!
     
     // Width constraints for centeredBackground view
     @IBOutlet weak var proportionalCenteredBackgroundConstraint: NSLayoutConstraint!
@@ -47,7 +53,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     // Dark Sky URL
     var url: String {
-        return "https://api.darksky.net/forecast/\(apiKey)/\(coordinates)?units=auto&exclude=minutely,hourly,daily,alerts"
+        return "https://api.darksky.net/forecast/\(apiKey)/\(coordinates)?units=auto&exclude=minutely,hourly,alerts"
     }
     
     // Weather data model
@@ -84,6 +90,8 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    @IBAction func unwindToWeather(_ sender: UIStoryboardSegue) {
+    }
     //
     // MARK: Location Services
     //
@@ -202,12 +210,13 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         // Set weather data
-        weatherData.summary = current["summary"].stringValue
-        weatherData.icon = current["icon"].stringValue
+        weatherData.summary = current["summary"].string
+        weatherData.icon = current["icon"].string
         weatherData.temperature = current["temperature"].double
         weatherData.windSpeed = current["windSpeed"].double
         weatherData.apparentTemperature = current["apparentTemperature"].double
         weatherData.nearestStorm = current["nearestStormDistance"].double
+        weatherData.moonPhase = json["daily"]["data"][0]["moonPhase"].double
     }
     
     //
@@ -289,6 +298,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             proportionalCenteredBackgroundConstraint.isActive = true
             centeredBackground.contentMode = .scaleAspectFill
             
+            // Unhide take over button
+            takeOverButtonView.isHidden = false
+            
             // Set background based on weather icon
             switch icon {
             case "clear-day":
@@ -345,5 +357,18 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    //
+    // MARK: Segue
+    //
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToRobotViewController" {
+            let destination = segue.destination as! RobotViewController
+            weatherData.icon = "clear-night"
+            let answer = Answer(icon: weatherData.icon!, moonPhase: weatherData.moonPhase!)
+            
+            destination.willRobotsTakeOver = answer
+        }
+    }
 }
 

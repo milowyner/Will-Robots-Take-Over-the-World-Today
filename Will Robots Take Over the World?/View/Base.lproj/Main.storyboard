@@ -313,7 +313,7 @@
                                             <constraint firstAttribute="width" secondItem="R4a-h0-0OM" secondAttribute="height" multiplier="1:1" id="NWA-0c-LYK"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-robot-answer-no" translatesAutoresizingMaskIntoConstraints="NO" id="Iwy-U6-haV">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Iwy-U6-haV">
                                         <rect key="frame" x="105" y="85" width="165" height="165"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Iwy-U6-haV" secondAttribute="height" multiplier="1:1" id="I7W-wU-kgx"/>
@@ -330,14 +330,14 @@
                                     <constraint firstItem="R4a-h0-0OM" firstAttribute="centerY" secondItem="nt7-cZ-Eas" secondAttribute="centerY" id="lBI-vH-BsN"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoc-XK-yc1">
-                                <rect key="frame" x="136" y="469.5" width="103.5" height="85.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoc-XK-yc1">
+                                <rect key="frame" x="158" y="469.5" width="59.5" height="85.5"/>
                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="70"/>
                                 <color key="textColor" name="white"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The clouds are perfect foreshadowing for an annihilation of the human race, but the risk of rain means they’ll stay home." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vR-Rn-gj6">
-                                <rect key="frame" x="37.5" y="567.5" width="300" height="47.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vR-Rn-gj6">
+                                <rect key="frame" x="37.5" y="599" width="300" height="16"/>
                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="13"/>
                                 <color key="textColor" name="white"/>
                                 <nil key="highlightedColor"/>
@@ -383,7 +383,6 @@
         <image name="icon-arrow-down" width="9" height="6"/>
         <image name="icon-arrow-up" width="9" height="6"/>
         <image name="icon-logo" width="50" height="50"/>
-        <image name="icon-robot-answer-no" width="158" height="154"/>
         <image name="icon-utility" width="6" height="26"/>
         <namedColor name="dayDark">
             <color red="0.32199999690055847" green="0.55699998140335083" blue="0.87800002098083496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

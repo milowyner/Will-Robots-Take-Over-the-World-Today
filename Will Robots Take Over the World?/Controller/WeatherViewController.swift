@@ -364,7 +364,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToRobotViewController" {
             let destination = segue.destination as! RobotViewController
-            weatherData.icon = "clear-night"
             let answer = Answer(icon: weatherData.icon!, moonPhase: weatherData.moonPhase!)
             
             destination.willRobotsTakeOver = answer

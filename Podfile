@@ -8,5 +8,6 @@ target 'Will Robots Take Over the World Today?' do
   # Pods for Will Robots Take Over the World Today?
   pod 'Alamofire'
   pod 'SwiftyJSON', '~> 4.0'
+  pod 'Hero'
 
 end

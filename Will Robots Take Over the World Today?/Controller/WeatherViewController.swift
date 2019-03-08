@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Hero
 import CoreLocation
 
 class WeatherViewController: UIViewController, CLLocationManagerDelegate {
@@ -19,6 +20,10 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var centeredBackground: UIImageView!
     @IBOutlet weak var bottomBackground: UIImageView!
     @IBOutlet weak var fullscreenBackground: UIImageView!
+    
+    // Outlets for setting animations
+    @IBOutlet var backgroundViews: [UIImageView]!
+    @IBOutlet weak var mainContentView: UIView!
     
     // Weather labels
     @IBOutlet weak var temperatureLabel: UILabel!
@@ -31,6 +36,10 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var unitToggle: UIButton!
     @IBOutlet weak var takeOverButtonView: UIStackView!
     @IBOutlet weak var aboutButton: UIButton!
+    
+    // Swipe gesture recognizers
+    @IBOutlet var swipeUp: UISwipeGestureRecognizer!
+    @IBOutlet var swipeLeft: UISwipeGestureRecognizer!
     
     // Width constraints for centeredBackground view
     @IBOutlet weak var proportionalCenteredBackgroundConstraint: NSLayoutConstraint!
@@ -66,6 +75,12 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         // Clear background
         topBackground.image = nil
         centeredBackground.image = nil
+        
+        // Set up animations
+        self.hero.isEnabled = true
+        aboutButton.hero.id = "about"
+        takeOverButtonView.hero.id = "takeOver"
+        gradientView.hero.id = "gradient"
         
         // Get current location
         enableBasicLocationServices()
@@ -303,6 +318,10 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             // Unhide take over button
             takeOverButtonView.isHidden = false
             
+            // Enable swipe gestures
+            swipeUp.isEnabled = true
+            swipeLeft.isEnabled = true
+            
             // Set background based on weather icon
             switch icon {
             case "clear-day":
@@ -364,11 +383,30 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     //
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToRobotViewController" {
-            let destination = segue.destination as! RobotViewController
+        
+        // Set background fade animation
+        for fadingView in backgroundViews {
+            fadingView.hero.modifiers = [.fade, .useGlobalCoordinateSpace]
+        }
+        
+        // If going to RobotViewController
+        if let destination = segue.destination as? RobotViewController {
+            // Set answer
             let answer = Answer(icon: weatherData.icon!, moonPhase: weatherData.moonPhase!)
-            
             destination.willRobotsTakeOver = answer
+            
+            // Set animations
+            mainContentView.hero.modifiers = [
+                .translate(CGPoint(x: 0, y: -view.bounds.height)),
+                .useGlobalCoordinateSpace]
+        }
+        
+        // If going to AboutViewController
+        if segue.destination is AboutViewController {
+            // Set animations
+            mainContentView.hero.modifiers = [
+                .translate(CGPoint(x: -view.bounds.width, y: 0)),
+                .useGlobalCoordinateSpace]
         }
     }
 }

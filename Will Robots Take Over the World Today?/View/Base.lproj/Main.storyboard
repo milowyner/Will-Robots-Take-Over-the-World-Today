@@ -198,6 +198,7 @@
                                         </connections>
                                     </stackView>
                                 </subviews>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="v0r-Xv-KDF" firstAttribute="centerY" secondItem="dmH-EA-a8R" secondAttribute="centerY" id="4LU-GG-0Cu"/>
                                     <constraint firstItem="dmH-EA-a8R" firstAttribute="top" secondItem="1qt-KZ-Beb" secondAttribute="top" constant="31" id="8o8-yy-t4t"/>
@@ -212,6 +213,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="nhQ-p3-knR" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="1GX-cj-cY4"/>
                             <constraint firstItem="Z8Q-do-E2L" firstAttribute="top" secondItem="dmH-EA-a8R" secondAttribute="centerY" id="1si-dg-CeU"/>
@@ -243,6 +245,10 @@
                                 <exclude reference="gLp-xw-I02"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="TmA-FI-tpz" appends="YES" id="4m4-La-1by"/>
+                            <outletCollection property="gestureRecognizers" destination="nPE-6b-nCE" appends="YES" id="5Wq-HI-uRZ"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="aboutButton" destination="MPa-dM-r2V" id="5EC-F2-ayW"/>
@@ -252,14 +258,21 @@
                         <outlet property="fullWidthCenteredBackgroundConstraint" destination="gLp-xw-I02" id="XeL-hy-c0U"/>
                         <outlet property="fullscreenBackground" destination="nhQ-p3-knR" id="JbS-hF-83c"/>
                         <outlet property="gradientView" destination="imW-gV-sU4" id="OxD-qV-JVg"/>
+                        <outlet property="mainContentView" destination="1qt-KZ-Beb" id="NVP-5y-B06"/>
                         <outlet property="nearestStormLabel" destination="Kmd-mI-JL2" id="FrS-oj-Xsk"/>
                         <outlet property="proportionalCenteredBackgroundConstraint" destination="zM0-ht-V5h" id="w8z-be-dvF"/>
                         <outlet property="summaryLabel" destination="RWh-qp-ewL" id="9EA-n8-lLo"/>
+                        <outlet property="swipeLeft" destination="nPE-6b-nCE" id="Qz5-JX-r7p"/>
+                        <outlet property="swipeUp" destination="TmA-FI-tpz" id="bSA-n8-cDW"/>
                         <outlet property="takeOverButtonView" destination="lty-sl-VKY" id="y1H-Mo-sYl"/>
                         <outlet property="temperatureLabel" destination="L3y-Iv-ROQ" id="U8S-TL-s9E"/>
                         <outlet property="topBackground" destination="OGF-5m-Dn4" id="s4b-KA-AUI"/>
                         <outlet property="unitToggle" destination="v0r-Xv-KDF" id="cSu-jO-L0I"/>
                         <outlet property="windSpeedLabel" destination="tdx-pK-EAW" id="Jvl-zj-u7j"/>
+                        <outletCollection property="backgroundViews" destination="nhQ-p3-knR" collectionClass="NSMutableArray" id="JfE-gQ-Awi"/>
+                        <outletCollection property="backgroundViews" destination="OGF-5m-Dn4" collectionClass="NSMutableArray" id="Obd-AR-oxz"/>
+                        <outletCollection property="backgroundViews" destination="Z8Q-do-E2L" collectionClass="NSMutableArray" id="85R-mt-fOE"/>
+                        <outletCollection property="backgroundViews" destination="ErU-Fs-sV4" collectionClass="NSMutableArray" id="4eg-Rb-yGK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -268,6 +281,16 @@
                         <segue destination="VRH-6y-0GO" kind="presentation" identifier="goToRobotViewController" id="JC7-l1-vuC"/>
                     </connections>
                 </tapGestureRecognizer>
+                <swipeGestureRecognizer enabled="NO" direction="up" id="TmA-FI-tpz">
+                    <connections>
+                        <segue destination="VRH-6y-0GO" kind="presentation" id="2aD-dx-czO"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer enabled="NO" direction="left" id="nPE-6b-nCE">
+                    <connections>
+                        <segue destination="3Dd-TO-CO4" kind="presentation" id="cpJ-p1-9Nn"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="53.600000000000001" y="26.53673163418291"/>
         </scene>
@@ -352,6 +375,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="0Ye-ld-e3X" firstAttribute="top" secondItem="YmK-iX-DgS" secondAttribute="top" constant="31" id="OtC-7z-uaw"/>
                                     <constraint firstAttribute="trailing" secondItem="2rv-Ks-lJe" secondAttribute="trailing" constant="30" id="dSG-8h-d1L"/>
@@ -380,15 +404,24 @@
                             <constraint firstAttribute="trailing" secondItem="hHa-VD-TAt" secondAttribute="trailing" id="vkU-To-hhb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RWF-nd-lzc"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="gh4-GE-Ar2" appends="YES" id="Df6-OZ-xlm"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="aboutButton" destination="0Ye-ld-e3X" id="QNc-3e-a4h"/>
                         <outlet property="fullScreenBackground" destination="bAQ-ig-30e" id="PVy-TZ-xCb"/>
                         <outlet property="gradientView" destination="hHa-VD-TAt" id="rBk-qe-lMF"/>
+                        <outlet property="mainContentView" destination="YmK-iX-DgS" id="ajG-HG-gME"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ueQ-Hp-85d" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="U5m-gl-qkY" userLabel="Exit" sceneMemberID="exit"/>
+                <swipeGestureRecognizer direction="right" id="gh4-GE-Ar2">
+                    <connections>
+                        <segue destination="U5m-gl-qkY" kind="unwind" unwindAction="unwindToWeather:" id="INB-qL-hPn"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="868" y="27"/>
         </scene>
@@ -472,6 +505,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="8vR-Rn-gj6" firstAttribute="width" secondItem="mFd-4Q-VFO" secondAttribute="width" multiplier="0.8" id="85R-yv-vVB"/>
                             <constraint firstItem="QHl-uW-eBd" firstAttribute="bottom" secondItem="qoc-XK-yc1" secondAttribute="bottom" constant="112" id="Cww-Mn-Q2D"/>
@@ -485,12 +519,19 @@
                             <constraint firstItem="qoc-XK-yc1" firstAttribute="centerX" secondItem="mFd-4Q-VFO" secondAttribute="centerX" id="zyh-aa-dh8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QHl-uW-eBd"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="jaV-2i-oRN" appends="YES" id="2Aq-uX-MuM"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="answerLabel" destination="qoc-XK-yc1" id="Yce-3E-sc2"/>
                         <outlet property="messageLabel" destination="8vR-Rn-gj6" id="p5P-CT-R9v"/>
                         <outlet property="robotIcon" destination="Iwy-U6-haV" id="EF5-OK-lQK"/>
-                        <outlet property="takeOverButton" destination="dtv-cX-fE6" id="IjP-8T-yO5"/>
+                        <outlet property="robotView" destination="nt7-cZ-Eas" id="ZEU-IJ-yE3"/>
+                        <outlet property="takeOverButtonView" destination="dtv-cX-fE6" id="IjP-8T-yO5"/>
+                        <outletCollection property="slidingViews" destination="qoc-XK-yc1" collectionClass="NSMutableArray" id="UxW-qf-gqb"/>
+                        <outletCollection property="slidingViews" destination="8vR-Rn-gj6" collectionClass="NSMutableArray" id="wuB-o0-FyL"/>
+                        <outletCollection property="slidingViews" destination="nt7-cZ-Eas" collectionClass="NSMutableArray" id="wwb-hZ-dPL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ug-ph-gY5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -500,6 +541,11 @@
                         <segue destination="r7o-bo-9J0" kind="unwind" unwindAction="unwindToWeather:" id="7jL-kl-ahx"/>
                     </connections>
                 </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="down" id="jaV-2i-oRN">
+                    <connections>
+                        <segue destination="r7o-bo-9J0" kind="unwind" unwindAction="unwindToWeather:" id="mSd-Aa-o3E"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="53.600000000000001" y="739.88005997001505"/>
         </scene>
@@ -530,4 +576,8 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="JC7-l1-vuC"/>
+        <segue reference="FQy-Cz-Ras"/>
+    </inferredMetricsTieBreakers>
 </document>

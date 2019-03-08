@@ -7,23 +7,39 @@
 //
 
 import UIKit
+import Hero
 
 class RobotViewController: UIViewController {
 
     @IBOutlet weak var robotIcon: UIImageView!
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var takeOverButton: UIStackView!
+    @IBOutlet weak var takeOverButtonView: UIStackView!
+    
+    // Outlets for fading animation
+    @IBOutlet weak var robotView: UIView!
+    @IBOutlet var slidingViews: [UIView]!
     
     var willRobotsTakeOver: Answer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set up animations
+        self.hero.isEnabled = true
+        takeOverButtonView.hero.id = "takeOver"
+        for slidingView in slidingViews {
+            slidingView.hero.modifiers = [
+                .translate(CGPoint(x: 0, y: view.bounds.height)),
+                .useGlobalCoordinateSpace]
+        }
+        
+        // Get answer
         guard let answer = willRobotsTakeOver else {
             fatalError("RobotViewController should have been sent an Answer")
         }
         
+        // Set background and text based on answer
         if answer.willTheyTakeOver == true {
             answerLabel.text = "YES"
             view.backgroundColor = UIColor(named: "threatYes")

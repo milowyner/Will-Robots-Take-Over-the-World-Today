@@ -69,6 +69,10 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     // Weather data model
     var weatherData = WeatherData()
     
+    //
+    // MARK: View Did Load
+    //
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -94,6 +98,11 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         manager?.startListening()
     }
     
+    //
+    // MARK: IBActions
+    //
+    
+    // Change weatherData temperature unit
     @IBAction func unitTogglePressed(_ sender: UIButton) {
         if let temperatureUnit = weatherData.temperatureUnit {
             switch temperatureUnit {
@@ -106,9 +115,10 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    // Unwind to weather view controller
     @IBAction func unwindToWeather(_ sender: UIStoryboardSegue) {
-
     }
+    
     //
     // MARK: Location Services
     //
@@ -384,7 +394,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     //
-    // MARK: Segue
+    // MARK: Segues
     //
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

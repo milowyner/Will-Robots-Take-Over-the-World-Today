@@ -243,7 +243,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     func updateUIWithWeatherData() {
         
         if let temperature = weatherData.temperature {
+            temperatureLabel.fadeOut()
             temperatureLabel.text = "\(Int(temperature.rounded()))º"
+            temperatureLabel.fadeIn()
         }
         
         if let summary = weatherData.summary {
@@ -251,7 +253,10 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         if let apparentTemperature = weatherData.apparentTemperature {
+            apparentTemperatureLabel.fadeOut()
             apparentTemperatureLabel.text = "\(Int(apparentTemperature.rounded()))º"
+            apparentTemperatureLabel.fadeIn()
+
         }
         
         if let windSpeed = weatherData.windSpeed {

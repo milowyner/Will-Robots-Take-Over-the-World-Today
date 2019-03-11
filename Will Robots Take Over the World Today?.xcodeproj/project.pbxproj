@@ -16,6 +16,7 @@
 		05B4CFB42227C4360089BCC2 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05B4CFB32227C4360089BCC2 /* Cabin-Regular.ttf */; };
 		05E9F29C222A19A100BFC173 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E9F29B222A19A100BFC173 /* WeatherData.swift */; };
 		05E9F2A2222A1AD400BFC173 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E9F2A1222A1AD400BFC173 /* GradientView.swift */; };
+		05FB314A223631EB00E7674D /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB3149223631EB00E7674D /* UIViewExtensions.swift */; };
 		05FE2AC6222DDACF00CD5DED /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FE2AC5222DDACF00CD5DED /* Answer.swift */; };
 		05FE2AC82231AFA300CD5DED /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FE2AC72231AFA300CD5DED /* AboutViewController.swift */; };
 		451A971B2DCCEC130AAD6593 /* Pods_Will_Robots_Take_Over_the_World_Today_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68DEE674E4480C700B752174 /* Pods_Will_Robots_Take_Over_the_World_Today_.framework */; };
@@ -33,6 +34,7 @@
 		05B4CFB32227C4360089BCC2 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
 		05E9F29B222A19A100BFC173 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		05E9F2A1222A1AD400BFC173 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		05FB3149223631EB00E7674D /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		05FE2AC5222DDACF00CD5DED /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		05FE2AC72231AFA300CD5DED /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		0C235A6275DD8078FE120980 /* Pods-Will Robots Take Over the World Today?.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Will Robots Take Over the World Today?.release.xcconfig"; path = "Pods/Target Support Files/Pods-Will Robots Take Over the World Today?/Pods-Will Robots Take Over the World Today?.release.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				0523FCB02223395000EFC49C /* WeatherViewController.swift */,
 				0517B964222DBA670004ACF1 /* RobotViewController.swift */,
 				05FE2AC72231AFA300CD5DED /* AboutViewController.swift */,
+				05FB3149223631EB00E7674D /* UIViewExtensions.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			files = (
 				0523FCB12223395000EFC49C /* WeatherViewController.swift in Sources */,
 				0523FCAF2223395000EFC49C /* AppDelegate.swift in Sources */,
+				05FB314A223631EB00E7674D /* UIViewExtensions.swift in Sources */,
 				05E9F2A2222A1AD400BFC173 /* GradientView.swift in Sources */,
 				05FE2AC82231AFA300CD5DED /* AboutViewController.swift in Sources */,
 				05FE2AC6222DDACF00CD5DED /* Answer.swift in Sources */,

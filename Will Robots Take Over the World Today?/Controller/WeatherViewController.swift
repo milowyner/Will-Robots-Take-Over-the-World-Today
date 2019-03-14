@@ -49,7 +49,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     
     // Network manager for checking if network is connected/disconnected
-    let manager = NetworkReachabilityManager(host: "api.darksky.net")
+    let networkManager = NetworkReachabilityManager(host: "api.darksky.net")
     
     // Currnet device coordinates
     var coordinates = "" {
@@ -79,26 +79,25 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Clear background
-        topBackground.image = nil
-        centeredBackground.image = nil
-        
         // Set up animations
         self.hero.isEnabled = true
         aboutButton.hero.id = "about"
         takeOverButtonView.hero.id = "takeOver"
         gradientView.hero.id = "gradient"
         
-        // Get current location
-        enableBasicLocationServices()
-        
-        // Enable location services when network is reachable
-        manager?.listener = { status in
+        // Listen for network changes
+        networkManager?.listener = { status in
+            
+            // Show loading screen
+            self.present(self.loadingScreen, animated: false, completion: nil)
+
+            // If network is reachable
             if status != .notReachable {
+                // Get current location
                 self.enableBasicLocationServices()
             }
         }
-        manager?.startListening()
+        networkManager?.startListening()
     }
     
     //
@@ -128,9 +127,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     func enableBasicLocationServices() {
         locationManager.delegate = self
-        
-        // Show loading screen
-        present(loadingScreen, animated: false, completion: nil)
         
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
@@ -207,6 +203,8 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
                 self.storeWeatherData(from: json)
                 
                 self.updateUIWithWeatherData()
+                
+                self.mainContentView.isHidden = false
                 
                 // Hide loading screen
                 self.loadingScreen.dismiss(animated: false, completion: nil)

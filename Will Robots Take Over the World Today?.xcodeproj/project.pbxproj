@@ -13,6 +13,8 @@
 		0523FCB42223395000EFC49C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0523FCB22223395000EFC49C /* Main.storyboard */; };
 		0523FCB62223395100EFC49C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0523FCB52223395100EFC49C /* Assets.xcassets */; };
 		0523FCB92223395100EFC49C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0523FCB72223395100EFC49C /* LaunchScreen.storyboard */; };
+		056166E222399EAC00E07955 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056166E122399EAC00E07955 /* LoadingViewController.swift */; };
+		056166E42239A01900E07955 /* LocationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056166E32239A01900E07955 /* LocationServices.swift */; };
 		05B4CFB42227C4360089BCC2 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05B4CFB32227C4360089BCC2 /* Cabin-Regular.ttf */; };
 		05E9F29C222A19A100BFC173 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E9F29B222A19A100BFC173 /* WeatherData.swift */; };
 		05E9F2A2222A1AD400BFC173 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E9F2A1222A1AD400BFC173 /* GradientView.swift */; };
@@ -31,6 +33,8 @@
 		0523FCB52223395100EFC49C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0523FCB82223395100EFC49C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0523FCBA2223395100EFC49C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		056166E122399EAC00E07955 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		056166E32239A01900E07955 /* LocationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServices.swift; sourceTree = "<group>"; };
 		05B4CFB32227C4360089BCC2 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
 		05E9F29B222A19A100BFC173 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		05E9F2A1222A1AD400BFC173 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -105,6 +109,7 @@
 				0517B964222DBA670004ACF1 /* RobotViewController.swift */,
 				05FE2AC72231AFA300CD5DED /* AboutViewController.swift */,
 				05FB3149223631EB00E7674D /* UIViewExtensions.swift */,
+				056166E122399EAC00E07955 /* LoadingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -114,6 +119,7 @@
 			children = (
 				05E9F29B222A19A100BFC173 /* WeatherData.swift */,
 				05FE2AC5222DDACF00CD5DED /* Answer.swift */,
+				056166E32239A01900E07955 /* LocationServices.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -277,8 +283,10 @@
 				05FB314A223631EB00E7674D /* UIViewExtensions.swift in Sources */,
 				05E9F2A2222A1AD400BFC173 /* GradientView.swift in Sources */,
 				05FE2AC82231AFA300CD5DED /* AboutViewController.swift in Sources */,
+				056166E222399EAC00E07955 /* LoadingViewController.swift in Sources */,
 				05FE2AC6222DDACF00CD5DED /* Answer.swift in Sources */,
 				0517B965222DBA670004ACF1 /* RobotViewController.swift in Sources */,
+				056166E42239A01900E07955 /* LocationServices.swift in Sources */,
 				05E9F29C222A19A100BFC173 /* WeatherData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

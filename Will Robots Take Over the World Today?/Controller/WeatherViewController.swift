@@ -69,6 +69,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     // Weather data model
     var weatherData = WeatherData()
     
+    lazy var loadingScreen = storyboard?.instantiateViewController(withIdentifier: "loadingScreen") as! LoadingViewController
+
+    
     //
     // MARK: View Did Load
     //
@@ -125,6 +128,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     func enableBasicLocationServices() {
         locationManager.delegate = self
+        
+        // Show loading screen
+        present(loadingScreen, animated: false, completion: nil)
         
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
@@ -201,6 +207,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
                 self.storeWeatherData(from: json)
                 
                 self.updateUIWithWeatherData()
+                
+                // Hide loading screen
+                self.loadingScreen.dismiss(animated: false, completion: nil)
                 
             } else {
                 print(response.error!)

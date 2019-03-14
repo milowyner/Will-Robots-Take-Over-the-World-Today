@@ -17,6 +17,60 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Loading View Controller-->
+        <scene sceneID="5ZT-0c-l8O">
+            <objects>
+                <viewController storyboardIdentifier="loadingScreen" id="gy3-gR-Too" customClass="LoadingViewController" customModule="Will_Robots_Take_Over_the_World_Today_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fKb-UE-EYG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kX3-UN-W6V" userLabel="Gradient View" customClass="GradientView" customModule="Will_Robots_Take_Over_the_World_Today_" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
+                                        <color key="value" name="neutralLight"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="secondColor">
+                                        <color key="value" name="neutralDark"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-about" translatesAutoresizingMaskIntoConstraints="NO" id="p7u-Yj-2df" userLabel="Fullscreen Background">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-radar" translatesAutoresizingMaskIntoConstraints="NO" id="dfT-qH-o4M">
+                                <rect key="frame" x="137.5" y="283.5" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="FuO-e0-dlu"/>
+                                    <constraint firstAttribute="width" constant="100" id="oYg-Pq-Eaz"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kX3-UN-W6V" firstAttribute="leading" secondItem="fKb-UE-EYG" secondAttribute="leading" id="3uw-4g-nDE"/>
+                            <constraint firstItem="kX3-UN-W6V" firstAttribute="top" secondItem="fKb-UE-EYG" secondAttribute="top" id="4Sq-BS-chO"/>
+                            <constraint firstItem="dfT-qH-o4M" firstAttribute="centerY" secondItem="fKb-UE-EYG" secondAttribute="centerY" id="6fK-sn-c6A"/>
+                            <constraint firstItem="p7u-Yj-2df" firstAttribute="leading" secondItem="fKb-UE-EYG" secondAttribute="leading" id="9AG-kh-4Ul"/>
+                            <constraint firstItem="dfT-qH-o4M" firstAttribute="centerX" secondItem="fKb-UE-EYG" secondAttribute="centerX" id="HZk-nn-UBe"/>
+                            <constraint firstItem="p7u-Yj-2df" firstAttribute="top" secondItem="fKb-UE-EYG" secondAttribute="top" id="Tfp-xX-dtD"/>
+                            <constraint firstAttribute="bottom" secondItem="p7u-Yj-2df" secondAttribute="bottom" id="U7E-6M-Em9"/>
+                            <constraint firstAttribute="trailing" secondItem="kX3-UN-W6V" secondAttribute="trailing" id="UlV-yF-dLW"/>
+                            <constraint firstAttribute="trailing" secondItem="p7u-Yj-2df" secondAttribute="trailing" id="hrD-qw-hMp"/>
+                            <constraint firstAttribute="bottom" secondItem="kX3-UN-W6V" secondAttribute="bottom" id="jam-P6-fsz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Jgb-hx-Iru"/>
+                    </view>
+                    <connections>
+                        <outlet property="radarImage" destination="dfT-qH-o4M" id="HMX-nj-XA0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wbm-gM-SGU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-794" y="27"/>
+        </scene>
         <!--Weather View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -559,6 +613,7 @@
         <image name="icon-arrow-down" width="9" height="6"/>
         <image name="icon-arrow-up" width="9" height="6"/>
         <image name="icon-logo" width="50" height="50"/>
+        <image name="icon-radar" width="100" height="100"/>
         <image name="icon-utility" width="6" height="26"/>
         <namedColor name="dayDark">
             <color red="0.32199999690055847" green="0.55699998140335083" blue="0.87800002098083496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

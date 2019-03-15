@@ -70,6 +70,10 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     // Weather data model
     var weatherData = WeatherData()
     
+    // Date object for limiting how often location/weather requests are called
+    var lastDate = Date()
+    
+    // Loading screen view controller
     lazy var loadingScreen = storyboard?.instantiateViewController(withIdentifier: "loadingScreen") as! LoadingViewController
 
     // Flag to keep track of the first time viewDidAppear is called
@@ -138,19 +142,27 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     func enableBasicLocationServices() {
         locationManager.delegate = self
         
-        switch CLLocationManager.authorizationStatus() {
-        case .notDetermined:
-            // Request when-in-use authorization initially
-            locationManager.requestWhenInUseAuthorization()
+        // Only update location and request weather data every 5 minutes
+        if -lastDate.timeIntervalSinceNow >= 300 {
             
-        case .restricted, .denied:
-            // Disable location features
-            print("Location denied")
+            // Set last date to current date
+            lastDate = Date()
             
-        case .authorizedWhenInUse, .authorizedAlways:
-            // Enable location features
-            locationManager.startUpdatingLocation()
-            print("Location authorized")
+            // Check authorization status
+            switch CLLocationManager.authorizationStatus() {
+            case .notDetermined:
+                // Request when-in-use authorization initially
+                locationManager.requestWhenInUseAuthorization()
+                
+            case .restricted, .denied:
+                // Disable location features
+                print("Location denied")
+                
+            case .authorizedWhenInUse, .authorizedAlways:
+                // Enable location features
+                locationManager.startUpdatingLocation()
+                print("Location authorized")
+            }
         }
     }
     
@@ -178,6 +190,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last!
         locationManager.stopUpdatingLocation()
+        locationManager.delegate = nil
         
         print("Location successful")
         
@@ -191,7 +204,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
                 if error == nil {
                     if let firstLocation = placemarks?[0] {
                         let locationString = "\(firstLocation.locality ?? ""), \(firstLocation.administrativeArea ?? "")".uppercased()
-                        print(locationString)
                         self.cityLabel.text = locationString
                     }
                 }

@@ -35,7 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("enter foreground")
         let weatherVC = window?.rootViewController as! WeatherViewController
         if weatherVC.networkManager?.networkReachabilityStatus != .notReachable {
-            print("applicationWillEnterForeground LS")
             weatherVC.enableBasicLocationServices()
         }
     }

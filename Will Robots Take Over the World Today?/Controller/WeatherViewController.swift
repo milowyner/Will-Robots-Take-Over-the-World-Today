@@ -71,6 +71,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     lazy var loadingScreen = storyboard?.instantiateViewController(withIdentifier: "loadingScreen") as! LoadingViewController
 
+    // Flag to keep track of the first time viewDidAppear is called
     var firstTimeViewDidAppear = true
     
     //
@@ -209,10 +210,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
                 let json = JSON(jsonResult)
                 
                 self.storeWeatherData(from: json)
-                
                 self.updateUIWithWeatherData()
-                
-                self.mainContentView.isHidden = false
                 
                 // Hide loading screen
                 self.loadingScreen.dismiss(animated: true, completion: nil)

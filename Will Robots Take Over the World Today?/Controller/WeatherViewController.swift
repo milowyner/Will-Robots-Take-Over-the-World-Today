@@ -71,6 +71,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     lazy var loadingScreen = storyboard?.instantiateViewController(withIdentifier: "loadingScreen") as! LoadingViewController
 
+    var firstTimeViewDidAppear = true
     
     //
     // MARK: View Did Load
@@ -87,10 +88,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         
         // Listen for network changes
         networkManager?.listener = { status in
-            
-            // Show loading screen
-            self.present(self.loadingScreen, animated: false, completion: nil)
-
             // If network is reachable
             if status != .notReachable {
                 // Get current location
@@ -99,6 +96,17 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         }
         networkManager?.startListening()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if firstTimeViewDidAppear {
+            // Show loading screen
+            present(loadingScreen, animated: false, completion: nil)
+            firstTimeViewDidAppear = false
+        }
+    }
+    
     
     //
     // MARK: IBActions
@@ -207,7 +215,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
                 self.mainContentView.isHidden = false
                 
                 // Hide loading screen
-                self.loadingScreen.dismiss(animated: false, completion: nil)
+                self.loadingScreen.dismiss(animated: true, completion: nil)
                 
             } else {
                 print(response.error!)

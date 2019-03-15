@@ -402,7 +402,7 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="2rv-Ks-lJe" userLabel="About Info">
-                                        <rect key="frame" x="164.5" y="438" width="180.5" height="136"/>
+                                        <rect key="frame" x="164.5" y="425.5" width="180.5" height="148.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="X3e-95-v7u" userLabel="Who Made This">
                                                 <rect key="frame" x="0.0" y="0.0" width="180.5" height="49.5"/>
@@ -422,7 +422,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Dlk-DZ-Xcl" userLabel="Powered by DarkSky">
-                                                <rect key="frame" x="82.5" y="86.5" width="98" height="49.5"/>
+                                                <rect key="frame" x="82.5" y="86.5" width="98" height="62"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="POWERED BY" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fpc-cB-F1j">
                                                         <rect key="frame" x="0.0" y="0.0" width="98" height="15"/>
@@ -430,12 +430,16 @@
                                                         <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DarkSky" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WW1-WU-Jki">
-                                                        <rect key="frame" x="0.0" y="15" width="98" height="34.5"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VTs-9H-6cV">
+                                                        <rect key="frame" x="0.0" y="15" width="98" height="47"/>
                                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="28"/>
-                                                        <color key="textColor" name="white"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <state key="normal" title="DarkSky">
+                                                            <color key="titleColor" name="white"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="darkSkyButtonPressed:" destination="3Dd-TO-CO4" eventType="touchUpInside" id="b8V-0q-FZt"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                             </stackView>
                                         </subviews>

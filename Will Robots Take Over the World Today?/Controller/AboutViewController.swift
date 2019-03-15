@@ -34,6 +34,9 @@ class AboutViewController: UIViewController {
     }
     
 
+    @IBAction func darkSkyButtonPressed(_ sender: UIButton) {
+        UIApplication.shared.open(URL(string: "https://darksky.net/poweredby/")!)
+    }
     /*
     // MARK: - Navigation
 

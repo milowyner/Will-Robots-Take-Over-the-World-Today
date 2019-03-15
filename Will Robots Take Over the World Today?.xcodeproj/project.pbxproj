@@ -108,7 +108,6 @@
 				0523FCB02223395000EFC49C /* WeatherViewController.swift */,
 				0517B964222DBA670004ACF1 /* RobotViewController.swift */,
 				05FE2AC72231AFA300CD5DED /* AboutViewController.swift */,
-				05FB3149223631EB00E7674D /* UIViewExtensions.swift */,
 				056166E122399EAC00E07955 /* LoadingViewController.swift */,
 			);
 			path = Controller;
@@ -129,6 +128,7 @@
 			children = (
 				0523FCB22223395000EFC49C /* Main.storyboard */,
 				05E9F2A1222A1AD400BFC173 /* GradientView.swift */,
+				05FB3149223631EB00E7674D /* UIViewExtensions.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

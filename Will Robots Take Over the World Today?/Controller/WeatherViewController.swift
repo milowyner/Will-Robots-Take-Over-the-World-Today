@@ -70,8 +70,11 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     // Weather data model
     var weatherData = WeatherData()
     
-    // Date object for limiting how often location/weather requests are called
-    var lastDate = Date()
+    // Interval determining often location/weather requests are called
+    var updateInterval: TimeInterval = 300
+    
+    // Date object used for limiting how often location/weather requests are called
+    lazy var lastDate = Date(timeInterval: -updateInterval, since: Date())
     
     // Loading screen view controller
     lazy var loadingScreen = storyboard?.instantiateViewController(withIdentifier: "loadingScreen") as! LoadingViewController
@@ -143,7 +146,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         
         // Only update location and request weather data every 5 minutes
-        if -lastDate.timeIntervalSinceNow >= 300 {
+        if -lastDate.timeIntervalSinceNow >= updateInterval {
             
             // Set last date to current date
             lastDate = Date()

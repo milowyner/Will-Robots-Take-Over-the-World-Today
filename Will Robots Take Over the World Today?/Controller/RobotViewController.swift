@@ -16,7 +16,7 @@ class RobotViewController: UIViewController {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var takeOverButtonView: UIStackView!
     
-    // Outlets for fading animation
+    // Outlets for animation
     @IBOutlet weak var robotView: UIView!
     @IBOutlet var slidingViews: [UIView]!
     
@@ -24,6 +24,10 @@ class RobotViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set fonts
+        answerLabel.setDynamicCustomFont(for: .title1)
+        messageLabel.setDynamicCustomFont(for: .body)
         
         // Set up animations
         self.hero.isEnabled = true

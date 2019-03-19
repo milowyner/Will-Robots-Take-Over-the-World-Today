@@ -15,6 +15,7 @@ class RobotViewController: UIViewController {
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var takeOverButtonView: UIStackView!
+    @IBOutlet weak var takeOverLabel: UILabel!
     
     // Outlets for animation
     @IBOutlet weak var robotView: UIView!
@@ -28,6 +29,7 @@ class RobotViewController: UIViewController {
         // Set fonts
         answerLabel.setDynamicCustomFont(for: .title1)
         messageLabel.setDynamicCustomFont(for: .body)
+        takeOverLabel.setDynamicCustomFont(for: .body)
         
         // Set up animations
         self.hero.isEnabled = true

@@ -36,6 +36,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     // Buttons
     @IBOutlet weak var unitToggle: UIButton!
     @IBOutlet weak var takeOverButtonView: UIStackView!
+    @IBOutlet weak var takeOverLabel: UILabel!
     @IBOutlet weak var aboutButton: UIButton!
     
     // Swipe gesture recognizers
@@ -88,6 +89,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set fonts
+        takeOverLabel.setDynamicCustomFont(for: .body)
         
         // Set up animations
         self.hero.isEnabled = true

@@ -247,12 +247,6 @@
                                             <outletCollection property="gestureRecognizers" destination="PEg-aV-FGT" appends="YES" id="KXY-cF-f1V"/>
                                         </connections>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PORTLAND, OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWU-aj-Jzj" userLabel="City">
-                                        <rect key="frame" x="30" y="256.5" width="95.5" height="17.5"/>
-                                        <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
-                                        <color key="textColor" name="white"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -263,10 +257,7 @@
                                     <constraint firstItem="v0r-Xv-KDF" firstAttribute="trailing" secondItem="dmH-EA-a8R" secondAttribute="trailing" constant="20" id="QFN-yr-X6G"/>
                                     <constraint firstAttribute="trailing" secondItem="dmH-EA-a8R" secondAttribute="trailing" constant="30" id="U5p-MM-yjo"/>
                                     <constraint firstItem="lty-sl-VKY" firstAttribute="centerX" secondItem="1qt-KZ-Beb" secondAttribute="centerX" id="Xj5-aO-h5b"/>
-                                    <constraint firstItem="jWU-aj-Jzj" firstAttribute="leading" secondItem="1qt-KZ-Beb" secondAttribute="leading" constant="30" id="YGf-Gw-SZ6"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jWU-aj-Jzj" secondAttribute="trailing" constant="20" symbolic="YES" id="du9-MU-dW7"/>
                                     <constraint firstItem="dmH-EA-a8R" firstAttribute="leading" secondItem="1qt-KZ-Beb" secondAttribute="leading" constant="30" id="gvB-O3-WPm"/>
-                                    <constraint firstItem="jWU-aj-Jzj" firstAttribute="top" secondItem="dmH-EA-a8R" secondAttribute="bottom" constant="30" id="jWk-8g-0f7"/>
                                     <constraint firstItem="MPa-dM-r2V" firstAttribute="top" secondItem="dmH-EA-a8R" secondAttribute="top" id="oS1-G8-Nja"/>
                                     <constraint firstItem="lty-sl-VKY" firstAttribute="width" secondItem="1qt-KZ-Beb" secondAttribute="width" multiplier="0.8" id="rIG-TS-pIj"/>
                                 </constraints>
@@ -317,7 +308,6 @@
                         <outlet property="apparentTemperatureLabel" destination="XQo-h3-oaL" id="TiF-k1-tsl"/>
                         <outlet property="bottomBackground" destination="ErU-Fs-sV4" id="dRA-N7-rHm"/>
                         <outlet property="centeredBackground" destination="Z8Q-do-E2L" id="W5C-g4-iMf"/>
-                        <outlet property="cityLabel" destination="jWU-aj-Jzj" id="XCS-H5-67h"/>
                         <outlet property="fullWidthCenteredBackgroundConstraint" destination="gLp-xw-I02" id="XeL-hy-c0U"/>
                         <outlet property="fullscreenBackground" destination="nhQ-p3-knR" id="JbS-hF-83c"/>
                         <outlet property="gradientView" destination="imW-gV-sU4" id="OxD-qV-JVg"/>

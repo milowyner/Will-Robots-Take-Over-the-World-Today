@@ -31,7 +31,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var apparentTemperatureLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var nearestStormLabel: UILabel!
-    @IBOutlet weak var cityLabel: UILabel!
     
     // Buttons
     @IBOutlet weak var unitToggle: UIButton!
@@ -211,7 +210,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
                 if error == nil {
                     if let firstLocation = placemarks?[0] {
                         let locationString = "\(firstLocation.locality ?? ""), \(firstLocation.administrativeArea ?? "")".uppercased()
-                        self.cityLabel.text = locationString
+                        print(locationString)
                     }
                 }
         })

@@ -13,6 +13,7 @@
 		0523FCB42223395000EFC49C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0523FCB22223395000EFC49C /* Main.storyboard */; };
 		0523FCB62223395100EFC49C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0523FCB52223395100EFC49C /* Assets.xcassets */; };
 		0523FCB92223395100EFC49C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0523FCB72223395100EFC49C /* LaunchScreen.storyboard */; };
+		055758B4224578F30043ABEB /* UIFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055758B3224578F30043ABEB /* UIFontExtensions.swift */; };
 		056166E222399EAC00E07955 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056166E122399EAC00E07955 /* LoadingViewController.swift */; };
 		056166E42239A01900E07955 /* LocationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056166E32239A01900E07955 /* LocationServices.swift */; };
 		05B4CFB42227C4360089BCC2 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05B4CFB32227C4360089BCC2 /* Cabin-Regular.ttf */; };
@@ -34,6 +35,7 @@
 		0523FCB52223395100EFC49C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0523FCB82223395100EFC49C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0523FCBA2223395100EFC49C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		055758B3224578F30043ABEB /* UIFontExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtensions.swift; sourceTree = "<group>"; };
 		056166E122399EAC00E07955 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		056166E32239A01900E07955 /* LocationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServices.swift; sourceTree = "<group>"; };
 		05B4CFB32227C4360089BCC2 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				05E9F2A1222A1AD400BFC173 /* GradientView.swift */,
 				05FB3149223631EB00E7674D /* UIViewExtensions.swift */,
 				05CF436C22419059007FB5A5 /* UILabelExtensions.swift */,
+				055758B3224578F30043ABEB /* UIFontExtensions.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 			files = (
 				0523FCB12223395000EFC49C /* WeatherViewController.swift in Sources */,
 				0523FCAF2223395000EFC49C /* AppDelegate.swift in Sources */,
+				055758B4224578F30043ABEB /* UIFontExtensions.swift in Sources */,
 				05FB314A223631EB00E7674D /* UIViewExtensions.swift in Sources */,
 				05E9F2A2222A1AD400BFC173 /* GradientView.swift in Sources */,
 				05FE2AC82231AFA300CD5DED /* AboutViewController.swift in Sources */,

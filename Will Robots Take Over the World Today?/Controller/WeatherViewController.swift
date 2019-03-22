@@ -32,6 +32,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var nearestStormLabel: UILabel!
     
+    // Static title labels
+    @IBOutlet var titleLabels: [UILabel]!
+    
     // Buttons
     @IBOutlet weak var unitToggle: UIButton!
     @IBOutlet weak var takeOverButtonView: UIStackView!
@@ -90,7 +93,17 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         
         // Set fonts
-        takeOverLabel.setDynamicCustomFont(for: .body)
+        summaryLabel.setDynamicCustomFont(for: .headline)
+        temperatureLabel.setDynamicCustomFont(for: .title1)
+        takeOverLabel.setDynamicCustomFont(for: .caption1)
+        
+        for label in titleLabels {
+            label.setDynamicCustomFont(for: .subheadline)
+        }
+        
+        for label in [apparentTemperatureLabel, windSpeedLabel, nearestStormLabel] {
+            label!.setDynamicCustomFont(for: .title3)
+        }
         
         // Set up animations
         self.hero.isEnabled = true
@@ -333,7 +346,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         
         if let temperatureUnit = weatherData.temperatureUnit {
             let attributedString = NSMutableAttributedString(string: "Cº/ Fº", attributes: [
-                .font: UIFont(name: "Cabin-Regular", size: 14.0)!,
+                .font: UIFont.dynamicCustomFont(for: .body),
                 .foregroundColor: UIColor(named: "whiteSubtle")!,
                 .kern: 0.84
                 ])
@@ -350,6 +363,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             }
             
             unitToggle.setAttributedTitle(attributedString, for: .normal)
+            unitToggle.titleLabel?.adjustsFontForContentSizeCategory = true
         }
         
         if let icon = weatherData.icon {
@@ -362,7 +376,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             // Reset constraints
             fullWidthCenteredBackgroundConstraint.isActive = false
             proportionalCenteredBackgroundConstraint.isActive = true
-            centeredBackground.contentMode = .scaleAspectFill
+            centeredBackground.contentMode = .scaleAspectFit
             
             // Unhide take over button
             takeOverButtonView.isHidden = false

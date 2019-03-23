@@ -98,7 +98,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="206"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z8Q-do-E2L" userLabel="Centered Background">
-                                <rect key="frame" x="37.5" y="177" width="300" height="539"/>
+                                <rect key="frame" x="37.5" y="176" width="300" height="539"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Z8Q-do-E2L" secondAttribute="height" multiplier="300:539" id="N9t-AN-Sos"/>
                                 </constraints>
@@ -110,7 +110,7 @@
                                 <rect key="frame" x="28.5" y="20" width="318.5" height="647"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Msc-Yk-hq8" userLabel="Weather Data">
-                                        <rect key="frame" x="0.0" y="50" width="318.5" height="214"/>
+                                        <rect key="frame" x="0.0" y="50" width="318.5" height="212"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLEAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWh-qp-ewL" userLabel="Summary">
                                                 <rect key="frame" x="0.0" y="0.0" width="318.5" height="21"/>
@@ -136,54 +136,54 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aQ2-Me-3Ag" userLabel="Secondary Data">
-                                                <rect key="frame" x="0.0" y="155" width="318.5" height="59"/>
+                                                <rect key="frame" x="0.0" y="155" width="318.5" height="57"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="bi1-3k-Cqb" userLabel="Feels Like">
-                                                        <rect key="frame" x="0.0" y="0.0" width="72.5" height="59"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="bi1-3k-Cqb" userLabel="Feels Like">
+                                                        <rect key="frame" x="0.0" y="0.0" width="72.5" height="57"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FEELS LIKE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jsg-7U-l6p">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="FEELS LIKE" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jsg-7U-l6p">
                                                                 <rect key="frame" x="0.0" y="0.0" width="72.5" height="18.5"/>
                                                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="15"/>
                                                                 <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="52º" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQo-h3-oaL" userLabel="Temperature">
-                                                                <rect key="frame" x="0.0" y="22.5" width="43.5" height="36.5"/>
-                                                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="30"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" verticalCompressionResistancePriority="1000" text="52º" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQo-h3-oaL" userLabel="Temperature">
+                                                                <rect key="frame" x="0.0" y="22.5" width="40.5" height="34.5"/>
+                                                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="28"/>
                                                                 <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Oe2-bP-dLI" userLabel="Wind">
-                                                        <rect key="frame" x="100" y="0.0" width="76" height="59"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Oe2-bP-dLI" userLabel="Wind">
+                                                        <rect key="frame" x="102.5" y="0.0" width="71" height="57"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WIND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yb3-mk-0J6">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="WIND" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yb3-mk-0J6">
                                                                 <rect key="frame" x="0.0" y="0.0" width="39.5" height="18.5"/>
                                                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="15"/>
                                                                 <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 mph" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdx-pK-EAW" userLabel="Speed">
-                                                                <rect key="frame" x="0.0" y="22.5" width="76" height="36.5"/>
-                                                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="30"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" verticalCompressionResistancePriority="1000" text="1 mph" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdx-pK-EAW" userLabel="Speed">
+                                                                <rect key="frame" x="0.0" y="22.5" width="71" height="34.5"/>
+                                                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="28"/>
                                                                 <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="K5k-ZN-jjw" userLabel="Nearest Storm">
-                                                        <rect key="frame" x="203.5" y="0.0" width="115" height="59"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="K5k-ZN-jjw" userLabel="Nearest Storm">
+                                                        <rect key="frame" x="203.5" y="0.0" width="115" height="57"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEAREST STORM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="an7-0R-hLS">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="NEAREST STORM" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="an7-0R-hLS">
                                                                 <rect key="frame" x="0.0" y="0.0" width="115" height="18.5"/>
                                                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="15"/>
                                                                 <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmd-mI-JL2" userLabel="Distance">
-                                                                <rect key="frame" x="0.0" y="22.5" width="56.5" height="36.5"/>
-                                                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="30"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" verticalCompressionResistancePriority="1000" text="9 mi" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmd-mI-JL2" userLabel="Distance">
+                                                                <rect key="frame" x="0.0" y="22.5" width="53" height="34.5"/>
+                                                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="28"/>
                                                                 <color key="textColor" name="white"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -218,7 +218,7 @@
                                         </connections>
                                     </button>
                                     <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="lty-sl-VKY" userLabel="Take Over Button View">
-                                        <rect key="frame" x="0.0" y="511" width="318.5" height="105"/>
+                                        <rect key="frame" x="0.0" y="508" width="318.5" height="108"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Bur-Sg-Az0">
                                                 <rect key="frame" x="134" y="0.0" width="50" height="50"/>
@@ -234,10 +234,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-arrow-down" translatesAutoresizingMaskIntoConstraints="NO" id="i5d-Bh-MMb">
-                                                <rect key="frame" x="154.5" y="99" width="9" height="6"/>
+                                                <rect key="frame" x="152.5" y="99" width="13.5" height="9"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="9" id="Ely-2R-J6S"/>
-                                                    <constraint firstAttribute="height" constant="6" id="UEi-3b-PZ6"/>
+                                                    <constraint firstAttribute="width" constant="13.5" id="Ely-2R-J6S"/>
+                                                    <constraint firstAttribute="height" constant="9" id="UEi-3b-PZ6"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
@@ -493,27 +493,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ux5-CG-0Id" userLabel="Main Content View">
-                                <rect key="frame" x="28" y="20" width="319" height="608"/>
+                                <rect key="frame" x="28" y="20" width="319" height="589"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="dtv-cX-fE6" userLabel="Take Over Button View">
-                                        <rect key="frame" x="0.0" y="20" width="319" height="105"/>
+                                        <rect key="frame" x="0.0" y="20" width="319" height="108"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-arrow-up" translatesAutoresizingMaskIntoConstraints="NO" id="Ptq-fI-wpt">
-                                                <rect key="frame" x="155" y="0.0" width="9" height="6"/>
+                                                <rect key="frame" x="153" y="0.0" width="13.5" height="9"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="6" id="CdU-ab-KY0"/>
-                                                    <constraint firstAttribute="width" constant="9" id="v2l-tq-vJe"/>
+                                                    <constraint firstAttribute="height" constant="9" id="CdU-ab-KY0"/>
+                                                    <constraint firstAttribute="width" constant="13.5" id="v2l-tq-vJe"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Pew-Iv-9nt">
-                                                <rect key="frame" x="134.5" y="20" width="50" height="50"/>
+                                                <rect key="frame" x="134.5" y="23" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="W2d-rg-D9t"/>
                                                     <constraint firstAttribute="height" constant="50" id="zKF-AA-myu"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Will Robots Take Over the World Today?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7T-lm-gwV">
-                                                <rect key="frame" x="16.5" y="84" width="286" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" text="Will Robots Take Over the World Today?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7T-lm-gwV">
+                                                <rect key="frame" x="16.5" y="87" width="286" height="21"/>
                                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
@@ -523,43 +523,30 @@
                                             <outletCollection property="gestureRecognizers" destination="Mi2-j8-JOT" appends="YES" id="SzL-St-TYq"/>
                                         </connections>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nt7-cZ-Eas" userLabel="Robot View">
-                                        <rect key="frame" x="-28" y="125" width="375" height="341"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eH5-AP-ISX" userLabel="Robot Image Container">
+                                        <rect key="frame" x="-28" y="128" width="375" height="319"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-robot-answer-no" translatesAutoresizingMaskIntoConstraints="NO" id="R4a-h0-0OM" userLabel="Robot Background">
-                                                <rect key="frame" x="-19" y="-27.5" width="413" height="412.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="R4a-h0-0OM" secondAttribute="height" multiplier="1:1" id="APE-EA-pbb"/>
-                                                </constraints>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Iwy-U6-haV">
-                                                <rect key="frame" x="97" y="80" width="181.5" height="181.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="Iwy-U6-haV" secondAttribute="height" multiplier="1:1" id="69s-gs-BpG"/>
-                                                </constraints>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="robot-answer-yes" translatesAutoresizingMaskIntoConstraints="NO" id="9mU-Z6-Zy7" userLabel="Robot Image">
+                                                <rect key="frame" x="0.0" y="-32" width="375" height="414.5"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="Iwy-U6-haV" firstAttribute="width" secondItem="R4a-h0-0OM" secondAttribute="width" multiplier="0.44" id="7mY-Ig-Ouy"/>
-                                            <constraint firstItem="R4a-h0-0OM" firstAttribute="centerX" secondItem="nt7-cZ-Eas" secondAttribute="centerX" id="8NA-xr-dha"/>
-                                            <constraint firstItem="R4a-h0-0OM" firstAttribute="width" secondItem="nt7-cZ-Eas" secondAttribute="width" multiplier="1.1" priority="750" id="Olt-0G-rAc"/>
-                                            <constraint firstItem="R4a-h0-0OM" firstAttribute="centerY" secondItem="nt7-cZ-Eas" secondAttribute="centerY" constant="8" id="ZPJ-wL-UbP"/>
-                                            <constraint firstItem="Iwy-U6-haV" firstAttribute="centerX" secondItem="nt7-cZ-Eas" secondAttribute="centerX" id="dHB-R5-ItU"/>
-                                            <constraint firstItem="R4a-h0-0OM" firstAttribute="height" relation="lessThanOrEqual" secondItem="nt7-cZ-Eas" secondAttribute="height" multiplier="1.25" id="gpo-Yc-rKZ"/>
-                                            <constraint firstItem="R4a-h0-0OM" firstAttribute="width" relation="lessThanOrEqual" secondItem="nt7-cZ-Eas" secondAttribute="width" multiplier="1.4" id="m6w-d8-zaN"/>
-                                            <constraint firstItem="Iwy-U6-haV" firstAttribute="centerY" secondItem="nt7-cZ-Eas" secondAttribute="centerY" id="rfb-EC-cs9"/>
+                                            <constraint firstItem="9mU-Z6-Zy7" firstAttribute="width" secondItem="eH5-AP-ISX" secondAttribute="width" id="3hH-4B-Hee"/>
+                                            <constraint firstItem="9mU-Z6-Zy7" firstAttribute="height" secondItem="eH5-AP-ISX" secondAttribute="height" multiplier="1.3" id="aAw-wz-ER6"/>
+                                            <constraint firstItem="9mU-Z6-Zy7" firstAttribute="centerY" secondItem="eH5-AP-ISX" secondAttribute="centerY" multiplier="1.1" id="qVM-dE-Ra5"/>
+                                            <constraint firstItem="9mU-Z6-Zy7" firstAttribute="centerX" secondItem="eH5-AP-ISX" secondAttribute="centerX" id="tcM-fj-GHG"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="De6-EI-WOR" userLabel="Full Answer View">
-                                        <rect key="frame" x="0.0" y="466" width="319" height="142"/>
+                                        <rect key="frame" x="0.0" y="447" width="319" height="142"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="YES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoc-XK-yc1">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" text="YES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoc-XK-yc1">
                                                 <rect key="frame" x="0.0" y="0.0" width="319" height="85.5"/>
                                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="70"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="With the sun shining brightly, it’s a perfect day for an annihilation of the human race." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZX0-lq-llb" userLabel="Message Label">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" text="With the sun shining brightly, it’s a perfect day for an annihilation of the human race." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZX0-lq-llb" userLabel="Message Label">
                                                 <rect key="frame" x="0.0" y="100.5" width="319" height="41.5"/>
                                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
                                                 <color key="textColor" name="white"/>
@@ -580,23 +567,23 @@
                                 <constraints>
                                     <constraint firstItem="dtv-cX-fE6" firstAttribute="top" secondItem="ux5-CG-0Id" secondAttribute="top" constant="20" symbolic="YES" id="Eq3-91-wsm"/>
                                     <constraint firstItem="dtv-cX-fE6" firstAttribute="leading" secondItem="ux5-CG-0Id" secondAttribute="leading" id="Icb-8b-aTt"/>
-                                    <constraint firstItem="De6-EI-WOR" firstAttribute="top" secondItem="nt7-cZ-Eas" secondAttribute="bottom" id="JI2-gt-5zv"/>
                                     <constraint firstAttribute="bottom" secondItem="De6-EI-WOR" secondAttribute="bottom" id="UXe-fM-5R9"/>
+                                    <constraint firstItem="eH5-AP-ISX" firstAttribute="top" secondItem="dtv-cX-fE6" secondAttribute="bottom" id="bFu-Js-HbO"/>
                                     <constraint firstAttribute="trailing" secondItem="De6-EI-WOR" secondAttribute="trailing" id="dsf-4H-4xL"/>
-                                    <constraint firstItem="nt7-cZ-Eas" firstAttribute="top" secondItem="dtv-cX-fE6" secondAttribute="bottom" id="lPU-p9-W7l"/>
                                     <constraint firstItem="De6-EI-WOR" firstAttribute="leading" secondItem="ux5-CG-0Id" secondAttribute="leading" id="mVX-FB-UXG"/>
                                     <constraint firstAttribute="trailing" secondItem="dtv-cX-fE6" secondAttribute="trailing" id="tiy-Of-xLv"/>
+                                    <constraint firstItem="De6-EI-WOR" firstAttribute="top" secondItem="eH5-AP-ISX" secondAttribute="bottom" id="vQb-Oc-MUe"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="nt7-cZ-Eas" firstAttribute="leading" secondItem="mFd-4Q-VFO" secondAttribute="leading" id="4oz-il-WPY"/>
                             <constraint firstItem="ux5-CG-0Id" firstAttribute="top" secondItem="QHl-uW-eBd" secondAttribute="top" id="GZD-qR-UwE"/>
-                            <constraint firstItem="ux5-CG-0Id" firstAttribute="height" secondItem="QHl-uW-eBd" secondAttribute="height" multiplier="0.94" id="WYL-40-u06"/>
+                            <constraint firstAttribute="trailing" secondItem="eH5-AP-ISX" secondAttribute="trailing" id="RjP-GK-mK9"/>
+                            <constraint firstItem="eH5-AP-ISX" firstAttribute="leading" secondItem="mFd-4Q-VFO" secondAttribute="leading" id="TPv-Pf-n3t"/>
+                            <constraint firstItem="ux5-CG-0Id" firstAttribute="height" secondItem="QHl-uW-eBd" secondAttribute="height" multiplier="0.91" id="WYL-40-u06"/>
                             <constraint firstItem="ux5-CG-0Id" firstAttribute="width" secondItem="mFd-4Q-VFO" secondAttribute="width" multiplier="0.85" id="h73-54-Hw4"/>
-                            <constraint firstAttribute="trailing" secondItem="nt7-cZ-Eas" secondAttribute="trailing" id="maG-Gy-wR0"/>
                             <constraint firstItem="ux5-CG-0Id" firstAttribute="centerX" secondItem="mFd-4Q-VFO" secondAttribute="centerX" id="rK0-2S-HUH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QHl-uW-eBd"/>
@@ -607,13 +594,12 @@
                     <connections>
                         <outlet property="answerLabel" destination="qoc-XK-yc1" id="Yce-3E-sc2"/>
                         <outlet property="messageLabel" destination="ZX0-lq-llb" id="TIe-T8-cdP"/>
-                        <outlet property="robotIcon" destination="Iwy-U6-haV" id="EF5-OK-lQK"/>
-                        <outlet property="robotView" destination="nt7-cZ-Eas" id="ZEU-IJ-yE3"/>
+                        <outlet property="robotImageView" destination="9mU-Z6-Zy7" id="5jw-Z7-ViR"/>
                         <outlet property="takeOverButtonView" destination="dtv-cX-fE6" id="IjP-8T-yO5"/>
                         <outlet property="takeOverLabel" destination="r7T-lm-gwV" id="4Ja-bT-KFz"/>
                         <outletCollection property="slidingViews" destination="ZX0-lq-llb" collectionClass="NSMutableArray" id="d0B-dd-TXD"/>
                         <outletCollection property="slidingViews" destination="qoc-XK-yc1" collectionClass="NSMutableArray" id="UxW-qf-gqb"/>
-                        <outletCollection property="slidingViews" destination="nt7-cZ-Eas" collectionClass="NSMutableArray" id="wwb-hZ-dPL"/>
+                        <outletCollection property="slidingViews" destination="9mU-Z6-Zy7" collectionClass="NSMutableArray" id="LLa-iS-GY8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ug-ph-gY5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -634,12 +620,12 @@
     </scenes>
     <resources>
         <image name="bg-about" width="375" height="667"/>
-        <image name="bg-robot-answer-no" width="375" height="384"/>
         <image name="icon-arrow-down" width="9" height="6"/>
         <image name="icon-arrow-up" width="9" height="6"/>
         <image name="icon-logo" width="50" height="50"/>
         <image name="icon-radar" width="100" height="100"/>
         <image name="icon-utility" width="6" height="26"/>
+        <image name="robot-answer-yes" width="375" height="394"/>
         <namedColor name="dayDark">
             <color red="0.32199999690055847" green="0.55699998140335083" blue="0.87800002098083496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

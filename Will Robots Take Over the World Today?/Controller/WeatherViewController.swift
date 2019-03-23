@@ -346,7 +346,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         
         if let temperatureUnit = weatherData.temperatureUnit {
             let attributedString = NSMutableAttributedString(string: "Cº/ Fº", attributes: [
-                .font: UIFont.dynamicCustomFont(for: .body),
+                .font: UIFont.dynamicCustomFont(for: .caption1),
                 .foregroundColor: UIColor(named: "whiteSubtle")!,
                 .kern: 0.84
                 ])

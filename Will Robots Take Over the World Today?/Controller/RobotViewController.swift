@@ -11,14 +11,13 @@ import Hero
 
 class RobotViewController: UIViewController {
 
-    @IBOutlet weak var robotIcon: UIImageView!
+    @IBOutlet weak var robotImageView: UIImageView!
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var takeOverButtonView: UIStackView!
     @IBOutlet weak var takeOverLabel: UILabel!
     
-    // Outlets for animation
-    @IBOutlet weak var robotView: UIView!
+    // Views that slide during transition
     @IBOutlet var slidingViews: [UIView]!
     
     var willRobotsTakeOver: Answer?
@@ -49,11 +48,11 @@ class RobotViewController: UIViewController {
         if answer.willTheyTakeOver == true {
             answerLabel.text = "YES"
             view.backgroundColor = UIColor(named: "threatYes")
-            robotIcon.image = UIImage(named: "icon-robot-answer-yes")
+            robotImageView.image = UIImage(named: "robot-answer-yes")
         } else {
             answerLabel.text = "NO"
             view.backgroundColor = UIColor(named: "threatNo")
-            robotIcon.image = UIImage(named: "icon-robot-answer-no")
+            robotImageView.image = UIImage(named: "robot-answer-no")
         }
         messageLabel.text = answer.message
     }

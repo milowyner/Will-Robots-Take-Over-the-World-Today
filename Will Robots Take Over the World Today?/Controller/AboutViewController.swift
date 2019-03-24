@@ -15,9 +15,21 @@ class AboutViewController: UIViewController {
     @IBOutlet weak var fullScreenBackground: UIImageView!
     @IBOutlet weak var gradientView: GradientView!
     @IBOutlet weak var mainContentView: UIView!
+
+    @IBOutlet var headlineLabels: [UILabel]!
+    @IBOutlet weak var mainTextLabel: UILabel!
+    @IBOutlet weak var mainTextButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set up fonts
+        for label in headlineLabels {
+            label.setDynamicCustomFont(for: .subheadline)
+        }
+        
+        mainTextLabel.setDynamicCustomFont(for: .title3)
+        mainTextButton.titleLabel!.font = UIFont.dynamicCustomFont(for: .title3)
         
         // Set up animations
         self.hero.isEnabled = true

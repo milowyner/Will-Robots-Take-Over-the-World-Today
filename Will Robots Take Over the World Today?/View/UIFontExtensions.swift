@@ -22,11 +22,7 @@ extension UIFont {
             fontSize = 70
         case .title3:
             fontSize = 28
-        case .headline:
-            fontSize = 15
         case .subheadline:
-            fontSize = 13
-        case .caption1:
             fontSize = 15
         default:
             fatalError("Unknown font style")

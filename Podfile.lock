@@ -1,7 +1,7 @@
 PODS:
-  - Alamofire (4.8.1)
+  - Alamofire (4.8.2)
   - Hero (1.4.0)
-  - SwiftyJSON (4.2.0)
+  - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -15,9 +15,9 @@ SPEC REPOS:
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
-  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
 PODFILE CHECKSUM: 957c44adc19d2a2af27ee1efd169fdc911182dd3
 

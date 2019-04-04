@@ -181,6 +181,8 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
                 // Enable location features
                 locationManager.startUpdatingLocation()
                 print("Location authorized")
+            @unknown default:
+                fatalError()
             }
         }
     }
@@ -202,6 +204,8 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             
         case .notDetermined, .authorizedAlways:
             print("Location auth status not determined")
+        @unknown default:
+            fatalError()
         }
     }
     

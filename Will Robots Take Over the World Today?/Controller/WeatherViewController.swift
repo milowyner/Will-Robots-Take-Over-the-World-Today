@@ -82,6 +82,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     // Loading screen view controller
     lazy var loadingScreen = storyboard?.instantiateViewController(withIdentifier: "loadingScreen") as! LoadingViewController
 
+    // User defaults
+    let defaults = UserDefaults.standard
+    
     // Flag to keep track of the first time viewDidAppear is called
     var firstTimeViewDidAppear = true
     
@@ -146,6 +149,10 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             case .celcius:
                 weatherData.temperatureUnit = .fahrenheit
             }
+            
+            // Save temperature unit preference
+            defaults.set(weatherData.temperatureUnit?.rawValue, forKey: "temperatureUnit")
+            
             updateUIWithWeatherData()
         }
     }
@@ -267,26 +274,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         let current = json["currently"]
         let units = json["flags"]["units"].stringValue
         
-        // Set temperature unit
-        switch units {
-        case "us": weatherData.temperatureUnit = .fahrenheit
-        case "si", "ca", "uk2": weatherData.temperatureUnit = .celcius
-        default: print("Error, unknown units")
-        }
-        // Set speed unit
-        switch units {
-        case "us", "uk2": weatherData.speedUnit = .milesPerHour
-        case "si": weatherData.speedUnit = .metersPerSecond
-        case "ca": weatherData.speedUnit = .kilometersPerHour
-        default: print("Error, unkown units")
-        }
-        // Set distance unit
-        switch units {
-        case "us", "uk2": weatherData.distanceUnit = .miles
-        case "si", "ca": weatherData.distanceUnit = .kilometers
-        default: print("Error, unkown units")
-        }
-        
         // Set weather data
         weatherData.summary = current["summary"].string
         weatherData.icon = current["icon"].string
@@ -295,6 +282,36 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         weatherData.apparentTemperature = current["apparentTemperature"].double
         weatherData.nearestStorm = current["nearestStormDistance"].double
         weatherData.moonPhase = json["daily"]["data"][0]["moonPhase"].double
+        
+        // Set temperature unit
+        switch units {
+        case "us": weatherData.temperatureUnit = .fahrenheit
+        case "si", "ca", "uk2": weatherData.temperatureUnit = .celcius
+        default: print("Error, unknown units")
+        }
+        
+        // If stored temperature unit is found, set that as new temperature unit
+        if let temperatureUnitRawValue = defaults.value(forKey: "temperatureUnit") as? Int {
+            weatherData.temperatureUnit = WeatherData.TemperatureUnit(rawValue: temperatureUnitRawValue)
+        } else {
+            // Save temperature unit preference
+            defaults.set(weatherData.temperatureUnit?.rawValue, forKey: "temperatureUnit")
+        }
+        
+        // Set speed unit
+        switch units {
+        case "us", "uk2": weatherData.speedUnit = .milesPerHour
+        case "si": weatherData.speedUnit = .metersPerSecond
+        case "ca": weatherData.speedUnit = .kilometersPerHour
+        default: print("Error, unkown units")
+        }
+        
+        // Set distance unit
+        switch units {
+        case "us", "uk2": weatherData.distanceUnit = .miles
+        case "si", "ca": weatherData.distanceUnit = .kilometers
+        default: print("Error, unkown units")
+        }
     }
     
     //

@@ -9,7 +9,7 @@
 import Foundation
 
 struct WeatherData {
-    enum TemperatureUnit {
+    enum TemperatureUnit: Int {
         case celcius
         case fahrenheit
     }
@@ -26,7 +26,7 @@ struct WeatherData {
     // Temperature unit; calculates/sets correct temperatures when set
     var temperatureUnit: TemperatureUnit? {
         didSet {
-            if let oldTemperature = temperature, let oldApparentTemperature = apparentTemperature, temperatureUnit != oldValue {
+            if let oldTemperature = temperature, let oldApparentTemperature = apparentTemperature, let oldTemperatureUnit = oldValue, temperatureUnit != oldTemperatureUnit {
                 // Convert temperatures to new unit
                 switch temperatureUnit! {
                 case .fahrenheit:

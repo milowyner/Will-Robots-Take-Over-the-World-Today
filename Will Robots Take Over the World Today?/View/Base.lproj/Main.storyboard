@@ -37,39 +37,97 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p7u-Yj-2df" userLabel="Fullscreen Background">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-radar" translatesAutoresizingMaskIntoConstraints="NO" id="dfT-qH-o4M">
-                                <rect key="frame" x="137.5" y="283.5" width="100" height="100"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FsT-2A-jka" userLabel="Main Content View">
+                                <rect key="frame" x="28" y="20" width="319" height="589"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-radar" translatesAutoresizingMaskIntoConstraints="NO" id="dfT-qH-o4M">
+                                        <rect key="frame" x="109.5" y="244.5" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="FuO-e0-dlu"/>
+                                            <constraint firstAttribute="width" constant="100" id="oYg-Pq-Eaz"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wp6-Ya-h47" userLabel="Robot Image Container">
+                                        <rect key="frame" x="-28" y="100" width="375" height="12.5"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="robot-answer-error" translatesAutoresizingMaskIntoConstraints="NO" id="wPe-ry-Iug" userLabel="Robot Image">
+                                                <rect key="frame" x="0.0" y="-1" width="375" height="16"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="wPe-ry-Iug" firstAttribute="centerY" secondItem="Wp6-Ya-h47" secondAttribute="centerY" multiplier="1.1" id="I0h-Mr-G20"/>
+                                            <constraint firstItem="wPe-ry-Iug" firstAttribute="height" secondItem="Wp6-Ya-h47" secondAttribute="height" multiplier="1.3" id="PvU-DF-IgA"/>
+                                            <constraint firstItem="wPe-ry-Iug" firstAttribute="centerX" secondItem="Wp6-Ya-h47" secondAttribute="centerX" id="f3Y-hN-go2"/>
+                                            <constraint firstItem="wPe-ry-Iug" firstAttribute="width" secondItem="Wp6-Ya-h47" secondAttribute="width" id="vDO-7R-RQk"/>
+                                        </constraints>
+                                    </view>
+                                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abY-16-cr2" userLabel="Error Message View">
+                                        <rect key="frame" x="0.0" y="112.5" width="319" height="476.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cef-av-uH6">
+                                                <rect key="frame" x="0.0" y="234" width="319" height="8"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ek1-XI-fsJ" userLabel="Error Message Top">
+                                                        <rect key="frame" x="159.5" y="0.0" width="0.0" height="0.0"/>
+                                                        <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
+                                                        <color key="textColor" name="white"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2c-SJ-HXz" userLabel="Error Message Bottom">
+                                                        <rect key="frame" x="159.5" y="8" width="0.0" height="0.0"/>
+                                                        <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
+                                                        <color key="textColor" name="white"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="cef-av-uH6" firstAttribute="leading" secondItem="abY-16-cr2" secondAttribute="leading" id="MAJ-We-BgL"/>
+                                            <constraint firstItem="cef-av-uH6" firstAttribute="centerY" secondItem="abY-16-cr2" secondAttribute="centerY" id="NpX-6p-Uiy"/>
+                                            <constraint firstItem="cef-av-uH6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="abY-16-cr2" secondAttribute="top" id="ZQJ-3I-lSn"/>
+                                            <constraint firstAttribute="trailing" secondItem="cef-av-uH6" secondAttribute="trailing" id="ciV-6X-8j4"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="cef-av-uH6" secondAttribute="bottom" id="d5h-Ie-QRk"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="FuO-e0-dlu"/>
-                                    <constraint firstAttribute="width" constant="100" id="oYg-Pq-Eaz"/>
+                                    <constraint firstItem="abY-16-cr2" firstAttribute="top" secondItem="Wp6-Ya-h47" secondAttribute="bottom" id="Gat-bw-T7V"/>
+                                    <constraint firstItem="abY-16-cr2" firstAttribute="leading" secondItem="FsT-2A-jka" secondAttribute="leading" id="Uje-xN-VZH"/>
+                                    <constraint firstItem="dfT-qH-o4M" firstAttribute="centerX" secondItem="FsT-2A-jka" secondAttribute="centerX" id="fxR-iZ-JyG"/>
+                                    <constraint firstItem="dfT-qH-o4M" firstAttribute="centerY" secondItem="FsT-2A-jka" secondAttribute="centerY" id="hR8-TR-feP"/>
+                                    <constraint firstItem="Wp6-Ya-h47" firstAttribute="top" secondItem="FsT-2A-jka" secondAttribute="top" constant="100" id="kjM-Vu-8P4"/>
+                                    <constraint firstAttribute="trailing" secondItem="abY-16-cr2" secondAttribute="trailing" id="mqg-Nh-3bo"/>
+                                    <constraint firstAttribute="bottom" secondItem="abY-16-cr2" secondAttribute="bottom" id="qZ0-VB-7IA"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="kX3-UN-W6V" firstAttribute="leading" secondItem="fKb-UE-EYG" secondAttribute="leading" id="3uw-4g-nDE"/>
                             <constraint firstItem="kX3-UN-W6V" firstAttribute="top" secondItem="fKb-UE-EYG" secondAttribute="top" id="4Sq-BS-chO"/>
-                            <constraint firstItem="dfT-qH-o4M" firstAttribute="centerY" secondItem="fKb-UE-EYG" secondAttribute="centerY" id="6fK-sn-c6A"/>
-                            <constraint firstItem="p7u-Yj-2df" firstAttribute="leading" secondItem="fKb-UE-EYG" secondAttribute="leading" id="9AG-kh-4Ul"/>
-                            <constraint firstItem="dfT-qH-o4M" firstAttribute="centerX" secondItem="fKb-UE-EYG" secondAttribute="centerX" id="HZk-nn-UBe"/>
-                            <constraint firstItem="p7u-Yj-2df" firstAttribute="top" secondItem="fKb-UE-EYG" secondAttribute="top" id="Tfp-xX-dtD"/>
-                            <constraint firstAttribute="bottom" secondItem="p7u-Yj-2df" secondAttribute="bottom" id="U7E-6M-Em9"/>
+                            <constraint firstItem="Wp6-Ya-h47" firstAttribute="leading" secondItem="fKb-UE-EYG" secondAttribute="leading" id="5ca-eH-R3W"/>
+                            <constraint firstItem="FsT-2A-jka" firstAttribute="width" secondItem="Jgb-hx-Iru" secondAttribute="width" multiplier="0.85" id="75J-HY-7BQ"/>
+                            <constraint firstItem="FsT-2A-jka" firstAttribute="centerX" secondItem="fKb-UE-EYG" secondAttribute="centerX" id="A7n-Js-48p"/>
+                            <constraint firstItem="FsT-2A-jka" firstAttribute="height" secondItem="Jgb-hx-Iru" secondAttribute="height" multiplier="0.91" id="Lb6-6c-4i3"/>
+                            <constraint firstAttribute="trailing" secondItem="Wp6-Ya-h47" secondAttribute="trailing" id="Nh9-QB-mtU"/>
                             <constraint firstAttribute="trailing" secondItem="kX3-UN-W6V" secondAttribute="trailing" id="UlV-yF-dLW"/>
-                            <constraint firstAttribute="trailing" secondItem="p7u-Yj-2df" secondAttribute="trailing" id="hrD-qw-hMp"/>
+                            <constraint firstItem="FsT-2A-jka" firstAttribute="top" secondItem="Jgb-hx-Iru" secondAttribute="top" id="ejw-QH-045"/>
                             <constraint firstAttribute="bottom" secondItem="kX3-UN-W6V" secondAttribute="bottom" id="jam-P6-fsz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Jgb-hx-Iru"/>
                     </view>
                     <connections>
+                        <outlet property="bottomErrorMessageLabel" destination="y2c-SJ-HXz" id="1cK-v6-26c"/>
+                        <outlet property="errorMessageView" destination="abY-16-cr2" id="x38-El-hfh"/>
                         <outlet property="radarImage" destination="dfT-qH-o4M" id="HMX-nj-XA0"/>
+                        <outlet property="robotImage" destination="wPe-ry-Iug" id="5uD-I9-K0h"/>
+                        <outlet property="topErrorMessageLabel" destination="ek1-XI-fsJ" id="ClU-zH-sln"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wbm-gM-SGU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-794" y="27"/>
+            <point key="canvasLocation" x="-794.39999999999998" y="26.53673163418291"/>
         </scene>
         <!--Weather View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -218,7 +276,7 @@
                                         </connections>
                                     </button>
                                     <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="lty-sl-VKY" userLabel="Take Over Button View">
-                                        <rect key="frame" x="0.0" y="507.5" width="319" height="108.5"/>
+                                        <rect key="frame" x="0.0" y="505" width="319" height="111"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Bur-Sg-Az0">
                                                 <rect key="frame" x="134.5" y="0.0" width="50" height="50"/>
@@ -228,13 +286,13 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Will Robots Take Over the World Today?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="923-8u-aAG">
-                                                <rect key="frame" x="33.5" y="64" width="252.5" height="18.5"/>
-                                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="15"/>
+                                                <rect key="frame" x="16.5" y="64" width="286" height="21"/>
+                                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-arrow-down" translatesAutoresizingMaskIntoConstraints="NO" id="i5d-Bh-MMb">
-                                                <rect key="frame" x="149" y="96.5" width="21" height="12"/>
+                                                <rect key="frame" x="149" y="99" width="21" height="12"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="21" id="Ely-2R-J6S"/>
                                                     <constraint firstAttribute="height" constant="12" id="UEi-3b-PZ6"/>
@@ -529,10 +587,10 @@
                                         </connections>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eH5-AP-ISX" userLabel="Robot Image Container">
-                                        <rect key="frame" x="-28" y="128.5" width="375" height="339"/>
+                                        <rect key="frame" x="-28" y="128.5" width="375" height="354"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9mU-Z6-Zy7" userLabel="Robot Image">
-                                                <rect key="frame" x="0.0" y="-34" width="375" height="440.5"/>
+                                                <rect key="frame" x="0.0" y="-35.5" width="375" height="460.5"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
@@ -543,16 +601,16 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="De6-EI-WOR" userLabel="Full Answer View">
-                                        <rect key="frame" x="0.0" y="467.5" width="319" height="121.5"/>
+                                        <rect key="frame" x="0.0" y="482.5" width="319" height="106.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoc-XK-yc1">
-                                                <rect key="frame" x="0.0" y="0.0" width="319" height="85.5"/>
-                                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="70"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="319" height="73"/>
+                                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="60"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" text="----" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZX0-lq-llb" userLabel="Message Label">
-                                                <rect key="frame" x="0.0" y="100.5" width="319" height="21"/>
+                                                <rect key="frame" x="0.0" y="85.5" width="319" height="21"/>
                                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
                                                 <color key="textColor" name="white"/>
                                                 <nil key="highlightedColor"/>
@@ -630,6 +688,7 @@
         <image name="icon-logo" width="50" height="50"/>
         <image name="icon-radar" width="100" height="100"/>
         <image name="icon-utility" width="6" height="26"/>
+        <image name="robot-answer-error" width="375" height="394"/>
         <namedColor name="dayDark">
             <color red="0.32199999690055847" green="0.55699998140335083" blue="0.87800002098083496" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -28,7 +28,7 @@ class RobotViewController: UIViewController {
         // Set fonts
         answerLabel.setDynamicCustomFont(for: .title2)
         messageLabel.setDynamicCustomFont(for: .body)
-        takeOverLabel.setDynamicCustomFont(for: .subheadline)
+        takeOverLabel.setDynamicCustomFont(for: .body)
         
         // Set up animations
         self.hero.isEnabled = true

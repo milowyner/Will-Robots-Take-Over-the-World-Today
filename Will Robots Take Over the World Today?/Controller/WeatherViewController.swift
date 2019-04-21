@@ -98,7 +98,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         // Set fonts
         summaryLabel.setDynamicCustomFont(for: .body)
         temperatureLabel.setDynamicCustomFont(for: .title1)
-        takeOverLabel.setDynamicCustomFont(for: .subheadline)
+        takeOverLabel.setDynamicCustomFont(for: .body)
         
         for label in titleLabels {
             label.setDynamicCustomFont(for: .subheadline)
@@ -182,7 +182,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
                 
             case .restricted, .denied:
                 // Disable location features
-                print("Location denied")
+                locationDenied()
                 
             case .authorizedWhenInUse, .authorizedAlways:
                 // Enable location features
@@ -194,6 +194,13 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    // Location was denied
+    func locationDenied() {
+        print("Location denied")
+        loadingScreen.mainErrorMessage = "Unable to retrieve your location. This likely means robots are already taking over the world. Run!"
+        loadingScreen.secondaryErrorMessage = "(Or…you simply need to allow location sharing in your device’s settings.)"
+    }
+    
     //
     // MARK: Core Location Delegate Methods
     //
@@ -203,13 +210,13 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
                          didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .restricted, .denied:
-            print("Location denied after changing auth status")
+            locationDenied()
             
-        case .authorizedWhenInUse:
+        case .authorizedWhenInUse, .authorizedAlways:
             locationManager.startUpdatingLocation()
             print("Location authorized after changing auth status")
             
-        case .notDetermined, .authorizedAlways:
+        case .notDetermined:
             print("Location auth status not determined")
         @unknown default:
             fatalError()
@@ -242,7 +249,8 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     // Failed to get location
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Could not get location, \(error)")
+        print("Failed to get location")
+        loadingScreen.mainErrorMessage = "Unable to retrieve your location. This likely means robots are already taking over the world. Run!"
     }
 
     //
@@ -261,9 +269,15 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
                 self.loadingScreen.dismiss(animated: true, completion: nil)
                 
             } else {
-                print(response.error!)
+                self.apiUnavailable()
             }
         }
+    }
+    
+    // Failed to access api
+    func apiUnavailable() {
+        print("API unavailable")
+        loadingScreen.mainErrorMessage = "Unable to retrieve weather data. This likely means robots are already taking over the world. Run!"
     }
     
     //

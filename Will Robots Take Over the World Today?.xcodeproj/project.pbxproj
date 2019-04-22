@@ -65,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0505050D226D7BFD0064C167 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				05B4CFB32227C4360089BCC2 /* Cabin-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		0523FCA22223395000EFC49C = {
 			isa = PBXGroup;
 			children = (
@@ -92,17 +100,9 @@
 				0523FCB52223395100EFC49C /* Assets.xcassets */,
 				0523FCB72223395100EFC49C /* LaunchScreen.storyboard */,
 				0523FCBA2223395100EFC49C /* Info.plist */,
-				05B4CFB22227C3E30089BCC2 /* Fonts */,
+				0505050D226D7BFD0064C167 /* Fonts */,
 			);
 			path = "Will Robots Take Over the World Today?";
-			sourceTree = "<group>";
-		};
-		05B4CFB22227C3E30089BCC2 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				05B4CFB32227C4360089BCC2 /* Cabin-Regular.ttf */,
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		05E9F29E222A1A4000BFC173 /* Controller */ = {

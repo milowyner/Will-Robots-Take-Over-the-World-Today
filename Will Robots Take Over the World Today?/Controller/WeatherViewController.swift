@@ -235,16 +235,16 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         coordinates = "\(location.coordinate.latitude),\(location.coordinate.longitude)"
         
         // Print city, state, country to console for debugging
-        let geocoder = CLGeocoder()
-        geocoder.reverseGeocodeLocation(location,
-            completionHandler: { (placemarks, error) in
-                if error == nil {
-                    if let firstLocation = placemarks?[0] {
-                        let locationString = "\(firstLocation.locality ?? ""), \(firstLocation.administrativeArea ?? "")".uppercased()
-                        print(locationString)
-                    }
-                }
-        })
+//        let geocoder = CLGeocoder()
+//        geocoder.reverseGeocodeLocation(location,
+//            completionHandler: { (placemarks, error) in
+//                if error == nil {
+//                    if let firstLocation = placemarks?[0] {
+//                        let locationString = "\(firstLocation.locality ?? ""), \(firstLocation.administrativeArea ?? "")".uppercased()
+//                        print(locationString)
+//                    }
+//                }
+//        })
     }
     
     // Failed to get location

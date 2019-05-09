@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -48,10 +47,10 @@
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wp6-Ya-h47" userLabel="Robot Image Container">
-                                        <rect key="frame" x="-28" y="100" width="375" height="12.5"/>
+                                        <rect key="frame" x="-28" y="100" width="375" height="303"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="robot-answer-error" translatesAutoresizingMaskIntoConstraints="NO" id="wPe-ry-Iug" userLabel="Robot Image">
-                                                <rect key="frame" x="0.0" y="-1" width="375" height="16"/>
+                                                <rect key="frame" x="0.0" y="-30.5" width="375" height="394.00000000000011"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
@@ -62,10 +61,10 @@
                                         </constraints>
                                     </view>
                                     <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abY-16-cr2" userLabel="Error Message View">
-                                        <rect key="frame" x="0.0" y="112.5" width="319" height="476.5"/>
+                                        <rect key="frame" x="0.0" y="403" width="319" height="186"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cef-av-uH6">
-                                                <rect key="frame" x="0.0" y="234" width="319" height="8"/>
+                                                <rect key="frame" x="0.0" y="89" width="319" height="8"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ek1-XI-fsJ" userLabel="Error Message Top">
                                                         <rect key="frame" x="159.5" y="0.0" width="0.0" height="0.0"/>

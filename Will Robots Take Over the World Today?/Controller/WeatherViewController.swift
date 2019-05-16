@@ -96,7 +96,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         
         // Set fonts
-        summaryLabel.setDynamicCustomFont(for: .body)
+        summaryLabel.setDynamicCustomFont(for: .headline)
         temperatureLabel.setDynamicCustomFont(for: .title1)
         takeOverLabel.setDynamicCustomFont(for: .body)
         
@@ -381,7 +381,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         
         if let temperatureUnit = weatherData.temperatureUnit {
             let attributedString = NSMutableAttributedString(string: "Cº/ Fº", attributes: [
-                .font: UIFont.dynamicCustomFont(for: .body),
+                .font: UIFont.dynamicCustomFont(for: .headline),
                 .foregroundColor: UIColor(named: "whiteSubtle")!,
                 .kern: 0.84
                 ])

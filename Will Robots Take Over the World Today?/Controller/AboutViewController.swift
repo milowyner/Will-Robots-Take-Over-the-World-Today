@@ -19,6 +19,7 @@ class AboutViewController: UIViewController {
     @IBOutlet var headlineLabels: [UILabel]!
     @IBOutlet weak var mainTextLabel: UILabel!
     @IBOutlet weak var mainTextButton: UIButton!
+    @IBOutlet weak var privacyPolicyButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class AboutViewController: UIViewController {
         
         mainTextLabel.setDynamicCustomFont(for: .title3)
         mainTextButton.titleLabel!.font = UIFont.dynamicCustomFont(for: .title3)
+        privacyPolicyButton.titleLabel!.font = UIFont.dynamicCustomFont(for: .caption1)
         
         // Set up animations
         self.hero.isEnabled = true
@@ -48,6 +50,11 @@ class AboutViewController: UIViewController {
 
     @IBAction func darkSkyButtonPressed(_ sender: UIButton) {
         UIApplication.shared.open(URL(string: "https://darksky.net/poweredby/")!)
+    }
+    
+    
+    @IBAction func privacyPolicyButtonPressed(_ sender: UIButton) {
+        UIApplication.shared.open(URL(string: "https://willrobotstakeovertheworld.today/privacy-policy/")!)
     }
     /*
     // MARK: - Navigation

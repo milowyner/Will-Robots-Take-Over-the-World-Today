@@ -98,7 +98,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         // Set fonts
         summaryLabel.setDynamicCustomFont(for: .headline)
         temperatureLabel.setDynamicCustomFont(for: .title1)
-        takeOverLabel.setDynamicCustomFont(for: .body)
+        takeOverLabel.setDynamicCustomFont(for: .headline)
         
         for label in titleLabels {
             label.setDynamicCustomFont(for: .subheadline)

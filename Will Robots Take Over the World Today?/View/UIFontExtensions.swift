@@ -23,9 +23,9 @@ extension UIFont {
         case .title3:
             fontSize = 28
         case .headline:
-            fontSize = 17
+            fontSize = 16
         case .subheadline:
-            fontSize = 15
+            fontSize = 13
         case .caption1:
             fontSize = 13
         default:

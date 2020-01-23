@@ -33,7 +33,8 @@ extension UIFont {
         }
         
         guard let customFont = UIFont(name: fontName, size: fontSize) else {
-            fatalError("Unknown font name")
+            print("ERROR: Custom font \"\(fontName)\" not found. Using system font instead.")
+            return UIFont.preferredFont(forTextStyle: style)
         }
         
         return UIFontMetrics(forTextStyle: style).scaledFont(for: customFont)

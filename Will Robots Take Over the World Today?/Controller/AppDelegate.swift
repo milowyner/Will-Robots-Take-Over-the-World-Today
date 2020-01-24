@@ -16,7 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Loading the custom font as part of a workaround to a bug in this app caused by iOS 13.
+        // See UIFontExtensions.swift for more info.
+        let _ = UIFont.customFont
+        
         return true
     }
 

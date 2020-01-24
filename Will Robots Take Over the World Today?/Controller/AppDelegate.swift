@@ -39,6 +39,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if weatherVC.networkManager?.networkReachabilityStatus != .notReachable {
             weatherVC.enableBasicLocationServices()
         }
+        
+        if let loadingVC = window?.rootViewController?.presentedViewController as? LoadingViewController {
+            if loadingVC.isLoading {
+                loadingVC.startRotate()
+            }
+        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

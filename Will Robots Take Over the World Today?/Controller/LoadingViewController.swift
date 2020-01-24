@@ -29,6 +29,10 @@ class LoadingViewController: UIViewController {
     
     var secondaryErrorMessage: String = ""
     
+    // Used for rotating the radar image when loading
+    var rotationAngle: CGFloat = 0
+    var isLoading = false
+    
     @IBOutlet weak var radarImage: UIImageView!
     @IBOutlet weak var robotImage: UIImageView!
     @IBOutlet weak var errorMessageView: UIView!
@@ -52,26 +56,8 @@ class LoadingViewController: UIViewController {
         if errorMessageReceieved { // Show error if there is one
             showErrorMessage()
         } else { // Show loading radar icon instead
-            
-            // Set up rotation animation
-            let rotation = CABasicAnimation(keyPath: "transform.rotation")
-            rotation.fromValue = 0
-            rotation.toValue = 2 * Double.pi
-            rotation.duration = 2
-            rotation.repeatCount = Float.infinity
-            
-            // Wait a couple seconds before showing the loading icon
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                // An error message could have been recieved during the waiting period, so only show
-                // the loading icon if there is no error message
-                if !self.errorMessageReceieved {
-                    UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseIn, animations: {
-                        self.radarImage.alpha = 0.5
-                    }, completion: nil)
-                    
-                    self.radarImage.layer.add(rotation, forKey: "Spin")
-                }
-            }
+            startRotate()
+            isLoading = true
         }
     }
     
@@ -89,6 +75,25 @@ class LoadingViewController: UIViewController {
             self.robotImage.alpha = 1
             self.errorMessageView.alpha = 1
         }, completion: nil)
+    }
+    
+    func startRotate() {
+        // Set up rotation animation
+        let rotation = CABasicAnimation(keyPath: "transform.rotation")
+        rotation.fromValue = rotationAngle
+        rotation.toValue = rotationAngle + 2 * CGFloat.pi
+        rotation.duration = 2
+        rotation.repeatCount = Float.infinity
+        
+        UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseIn, animations: {
+            self.radarImage.alpha = 0.5
+        }, completion: nil)
+        
+        self.radarImage.layer.add(rotation, forKey: "Spin")
+    }
+    
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        rotationAngle = atan2(radarImage.transform.b, radarImage.transform.a)
     }
 
 }

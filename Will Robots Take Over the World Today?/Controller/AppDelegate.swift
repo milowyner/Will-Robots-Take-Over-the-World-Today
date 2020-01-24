@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let loadingVC = window?.rootViewController?.presentedViewController as? LoadingViewController {
             if loadingVC.isLoading {
-                loadingVC.startRotate()
+                loadingVC.startRadarImageRotation()
             }
         }
     }

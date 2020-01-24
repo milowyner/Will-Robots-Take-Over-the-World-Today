@@ -56,7 +56,7 @@ class LoadingViewController: UIViewController {
         if errorMessageReceieved { // Show error if there is one
             showErrorMessage()
         } else { // Show loading radar icon instead
-            startRotate()
+            startRadarImageRotation()
             isLoading = true
         }
     }
@@ -77,8 +77,8 @@ class LoadingViewController: UIViewController {
         }, completion: nil)
     }
     
-    func startRotate() {
-        // Set up rotation animation
+    // Starts radar image rotation whereever it left off
+    func startRadarImageRotation() {
         let rotation = CABasicAnimation(keyPath: "transform.rotation")
         rotation.fromValue = rotationAngle
         rotation.toValue = rotationAngle + 2 * CGFloat.pi

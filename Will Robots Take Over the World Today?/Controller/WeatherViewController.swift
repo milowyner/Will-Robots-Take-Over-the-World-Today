@@ -251,6 +251,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Failed to get location")
         loadingScreen.mainErrorMessage = "Unable to retrieve your location. This likely means robots are already taking over the world. Run!"
+//        enableBasicLocationServices()
     }
 
     //
@@ -269,17 +270,11 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
                 self.loadingScreen.dismiss(animated: true, completion: nil)
                 
             } else {
-                self.apiUnavailable()
+                self.requestWeatherData()
             }
         }
     }
-    
-    // Failed to access api
-    func apiUnavailable() {
-        print("API unavailable")
-        loadingScreen.mainErrorMessage = "Unable to retrieve weather data. This likely means robots are already taking over the world. Run!"
-    }
-    
+        
     //
     // MARK: JSON Parsing
     //

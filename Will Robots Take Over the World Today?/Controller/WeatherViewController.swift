@@ -329,6 +329,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     func updateUIWithWeatherData() {
         
+        // Unhide main content view
+        mainContentView.isHidden = false
+        
         if let temperature = weatherData.temperature {
             temperatureLabel.fadeOut()
             temperatureLabel.text = "\(Int(temperature.rounded()))º"
@@ -407,9 +410,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             fullWidthCenteredBackgroundConstraint.isActive = false
             proportionalCenteredBackgroundConstraint.isActive = true
             centeredBackground.contentMode = .scaleAspectFit
-            
-            // Unhide take over button
-            takeOverButtonView.isHidden = false
             
             // Enable swipe gestures
             swipeUp.isEnabled = true

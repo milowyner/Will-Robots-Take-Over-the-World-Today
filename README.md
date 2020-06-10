@@ -1,11 +1,11 @@
-<img src="app-icon-preview.png" width="128">![](app-icon-preview.png)
+<img src="app-icon-preview.png" width="128">
 # Will Robots Take Over the World Today?
 Tells you "weather" or not robots will take over the world today.
 ###### *Temporarily no longer in the App Store*
 
 ## Screenshots
-
 ![](screenshot-1.png) | ![](screenshot-2.png) | ![](screenshot-3.png) | ![](screenshot-4.png)
+--------------------- | --------------------- | --------------------- | ---------------------
 
 ## App Store Description
 

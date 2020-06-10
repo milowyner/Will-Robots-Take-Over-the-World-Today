@@ -17,3 +17,10 @@ What we do know is that robots don’t like rain. Or snow. Or tornados. So perha
 So ask yourself the question, “will robots take over today?” Then, open the app and get the answer you’re seeking. Oh, yeah, you can also prepare for hikes, long commutes on bicycles, and trips to the beach with our reliable weather report. Think of it as your all-inclusive weather/robot-takeover report.
 
 Now, get out there and enjoy your world. While it’s still here. Maybe.
+
+## Try for yourself
+
+1. Download or clone the project.
+2. Navigate to the directory in Terminal and execute `pod install`.
+3. Open the .xcworkspace file in Xcode.
+3. Build and run the app in a simulator or your iOS device.

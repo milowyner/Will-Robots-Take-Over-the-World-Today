@@ -2,7 +2,7 @@
 
 # Will Robots Take Over the World Today?
 Tells you "weather" or not robots will take over the world today.
-###### *Temporarily no longer in the App Store*
+[Download on the App Store](https://apps.apple.com/ca/app/will-robots-take-over-today/id1462999038)
 
 ## Screenshots
 ![](screenshot-1.png) | ![](screenshot-2.png) | ![](screenshot-3.png) | ![](screenshot-4.png)

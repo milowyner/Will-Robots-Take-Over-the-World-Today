@@ -23,4 +23,5 @@ Now, get out there and enjoy your world. While it’s still here. Maybe.
 1. Download or clone the project.
 2. Navigate to the directory in Terminal and execute `pod install`.
 3. Open the .xcworkspace file in Xcode.
-3. Build and run the app in a simulator or your iOS device.
+4. Build and run the app in a simulator or your iOS device.
+5. Collaborate with friends

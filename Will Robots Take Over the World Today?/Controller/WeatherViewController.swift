@@ -175,7 +175,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
             lastDate = Date()
             
             // Check authorization status
-            switch CLLocationManager.authorizationStatus() {
+            switch CLLocationManager().authorizationStatus {
             case .notDetermined:
                 // Request when-in-use authorization initially
                 locationManager.requestWhenInUseAuthorization()

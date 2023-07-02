@@ -11,6 +11,11 @@ import Alamofire
 import SwiftyJSON
 import Hero
 import CoreLocation
+import WeatherKit
+
+fileprivate extension String {
+    static let temperatureUnitKey = "temperatureUnit"
+}
 
 class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -56,11 +61,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     let networkManager = NetworkReachabilityManager(host: "api.darksky.net")
     
     // Currnet device coordinates
-    var coordinates = "" {
-        didSet {
-            requestWeatherData()
-        }
-    }
+    var coordinates = ""
     
     // Dark Sky API Key
     var apiKey = "5fd28bb80945cf58fd60c4c8a3acb413"
@@ -71,7 +72,32 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     // Weather data model
-    var weatherData = WeatherData()
+    var weather: Weather?
+    
+    // Temperature unit, mapped to UserDefaults using celsius = 0 and fahrenheit = 1
+    var temperatureUnit: UnitTemperature = {
+        if let rawValue = UserDefaults.standard.value(forKey: .temperatureUnitKey) as? Int {
+            return rawValue == 0 ? .celsius : .fahrenheit
+        } else {
+            return UnitTemperature(forLocale: Locale.current)
+        }
+    }() {
+        didSet {
+            let rawValue = temperatureUnit == .celsius ? 0 : 1
+            UserDefaults.standard.set(rawValue, forKey: .temperatureUnitKey)
+        }
+    }
+    
+    // Checks if it's day or night
+    var daytime: Bool {
+        if let sunEvents = weather?.dailyForecast.first?.sun,
+           let sunrise = sunEvents.sunrise,
+           let sunset = sunEvents.sunset {
+            return (sunrise..<sunset).contains(Date())
+        } else {
+            return true
+        }
+    }
     
     // Interval determining often location/weather requests are called
     var updateInterval: TimeInterval = 300
@@ -81,9 +107,6 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     // Loading screen view controller
     lazy var loadingScreen = storyboard?.instantiateViewController(withIdentifier: "loadingScreen") as! LoadingViewController
-
-    // User defaults
-    let defaults = UserDefaults.standard
     
     // Flag to keep track of the first time viewDidAppear is called
     var firstTimeViewDidAppear = true
@@ -140,21 +163,10 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     // MARK: IBActions
     //
     
-    // Change weatherData temperature unit
+    // Change the temperature unit
     @IBAction func unitTogglePressed(_ sender: UIButton) {
-        if let temperatureUnit = weatherData.temperatureUnit {
-            switch temperatureUnit {
-            case .fahrenheit:
-                weatherData.temperatureUnit = .celcius
-            case .celcius:
-                weatherData.temperatureUnit = .fahrenheit
-            }
-            
-            // Save temperature unit preference
-            defaults.set(weatherData.temperatureUnit?.rawValue, forKey: "temperatureUnit")
-            
-            updateUIWithWeatherData()
-        }
+        temperatureUnit = temperatureUnit == .celsius ? .fahrenheit : .celsius
+        updateUIWithWeatherData()
     }
     
     // Unwind to weather view controller
@@ -225,101 +237,39 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     
     // Location was updated
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("Location successful")
+        
         let location = locations.last!
         locationManager.stopUpdatingLocation()
         locationManager.delegate = nil
         
-        print("Location successful")
-        
         // Update coordinates
         coordinates = "\(location.coordinate.latitude),\(location.coordinate.longitude)"
         
-        // Print city, state, country to console for debugging
-//        let geocoder = CLGeocoder()
-//        geocoder.reverseGeocodeLocation(location,
-//            completionHandler: { (placemarks, error) in
-//                if error == nil {
-//                    if let firstLocation = placemarks?[0] {
-//                        let locationString = "\(firstLocation.locality ?? ""), \(firstLocation.administrativeArea ?? "")".uppercased()
-//                        print(locationString)
-//                    }
-//                }
-//        })
+        requestWeatherData(location: location)
     }
     
     // Failed to get location
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Failed to get location")
         loadingScreen.mainErrorMessage = "Unable to retrieve your location. This likely means robots are already taking over the world. Run!"
-//        enableBasicLocationServices()
     }
 
     //
     // MARK: Networking
     //
     
-    func requestWeatherData() {
-        Alamofire.request(url).responseJSON { response in
-            if let jsonResult = response.result.value {
-                let json = JSON(jsonResult)
+    func requestWeatherData(location: CLLocation) {
+        Task.init {
+            do {
+                weather = try await WeatherService.shared.weather(for: location)
+                print("Weather retrieved successfully")
                 
-                self.storeWeatherData(from: json)
-                self.updateUIWithWeatherData()
-                
-                // Hide loading screen
-                self.loadingScreen.dismiss(animated: true, completion: nil)
-                
-            } else {
-                self.requestWeatherData()
+                updateUIWithWeatherData()
+                loadingScreen.dismiss(animated: true, completion: nil)
+            } catch {
+                print(error)
             }
-        }
-    }
-        
-    //
-    // MARK: JSON Parsing
-    //
-    
-    func storeWeatherData(from json: JSON) {
-        let current = json["currently"]
-        let units = json["flags"]["units"].stringValue
-        
-        // Set weather data
-        weatherData.summary = current["summary"].string
-        weatherData.icon = current["icon"].string
-        weatherData.temperature = current["temperature"].double
-        weatherData.windSpeed = current["windSpeed"].double
-        weatherData.apparentTemperature = current["apparentTemperature"].double
-        weatherData.nearestStorm = current["nearestStormDistance"].double
-        weatherData.moonPhase = json["daily"]["data"][0]["moonPhase"].double
-        
-        // Set temperature unit
-        switch units {
-        case "us": weatherData.temperatureUnit = .fahrenheit
-        case "si", "ca", "uk2": weatherData.temperatureUnit = .celcius
-        default: print("Error, unknown units")
-        }
-        
-        // If stored temperature unit is found, set that as new temperature unit
-        if let temperatureUnitRawValue = defaults.value(forKey: "temperatureUnit") as? Int {
-            weatherData.temperatureUnit = WeatherData.TemperatureUnit(rawValue: temperatureUnitRawValue)
-        } else {
-            // Save temperature unit preference
-            defaults.set(weatherData.temperatureUnit?.rawValue, forKey: "temperatureUnit")
-        }
-        
-        // Set speed unit
-        switch units {
-        case "us", "uk2": weatherData.speedUnit = .milesPerHour
-        case "si": weatherData.speedUnit = .metersPerSecond
-        case "ca": weatherData.speedUnit = .kilometersPerHour
-        default: print("Error, unkown units")
-        }
-        
-        // Set distance unit
-        switch units {
-        case "us", "uk2": weatherData.distanceUnit = .miles
-        case "si", "ca": weatherData.distanceUnit = .kilometers
-        default: print("Error, unkown units")
         }
     }
     
@@ -328,145 +278,125 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
     //
     
     func updateUIWithWeatherData() {
+        guard let weather else { return }
+        let currentWeather = weather.currentWeather
         
         // Unhide main content view
         mainContentView.isHidden = false
         
-        if let temperature = weatherData.temperature {
-            temperatureLabel.fadeOut()
-            temperatureLabel.text = "\(Int(temperature.rounded()))º"
-            temperatureLabel.fadeIn()
-        }
+        let temperature = currentWeather.temperature.converted(to: temperatureUnit)
+        temperatureLabel.fadeOut()
+        temperatureLabel.text = "\(Int(temperature.value.rounded()))º"
+        temperatureLabel.fadeIn()
         
-        if let summary = weatherData.summary {
-            summaryLabel.text = summary.uppercased()
-        }
+        let summary = "\(currentWeather.condition)"
+        summaryLabel.text = summary.uppercased()
         
-        if let apparentTemperature = weatherData.apparentTemperature {
-            apparentTemperatureLabel.fadeOut()
-            apparentTemperatureLabel.text = "\(Int(apparentTemperature.rounded()))º"
-            apparentTemperatureLabel.fadeIn()
-
-        }
+        let apparentTemperature = currentWeather.apparentTemperature.converted(to: temperatureUnit)
+        apparentTemperatureLabel.fadeOut()
+        apparentTemperatureLabel.text = "\(Int(apparentTemperature.value.rounded()))º"
+        apparentTemperatureLabel.fadeIn()
         
-        if let windSpeed = weatherData.windSpeed {
-            var unit: String? = nil
-            if let speedUnit = weatherData.speedUnit {
-                switch speedUnit {
-                case .milesPerHour:
-                    unit = " mph"
-                case .kilometersPerHour:
-                    unit = " kph"
-                case .metersPerSecond:
-                    unit = " m/s"
-                }
-            }
-            windSpeedLabel.text = "\(Int(windSpeed.rounded()))\(unit ?? "")"
+        let windSpeed = currentWeather.wind.speed
+        windSpeedLabel.text = windSpeed.formatted(.measurement(
+            width: .abbreviated,
+            numberFormatStyle: .number.rounded(increment: 1))
+        )
+                
+        // Temperature unit label
+        let attributedString = NSMutableAttributedString(string: "Cº/ Fº", attributes: [
+            .font: UIFont.dynamicCustomFont(for: .headline),
+            .foregroundColor: UIColor(named: "whiteSubtle")!,
+            .kern: 0.84
+        ])
+        switch temperatureUnit {
+        case .fahrenheit:
+            attributedString.addAttributes([
+                .foregroundColor: UIColor.white
+            ], range: NSRange(location: 4, length: 2))
+        case .celsius:
+            attributedString.addAttributes([
+                .foregroundColor: UIColor.white
+            ], range: NSRange(location: 0, length: 2))
+        default:
+            break
         }
+        unitToggle.setAttributedTitle(attributedString, for: .normal)
+        unitToggle.titleLabel?.adjustsFontForContentSizeCategory = true
         
-        if let nearestStorm = weatherData.nearestStorm {
-            var unit: String? = nil
-            if let distanceUnit = weatherData.distanceUnit {
-                switch distanceUnit {
-                case .kilometers:
-                    unit = " km"
-                case .miles:
-                    unit = " mi"
-                }
-            }
-            nearestStormLabel.text = "\(Int(nearestStorm.rounded()))\(unit ?? "")"
-        }
+        // Clear background images
+        topBackground.image = nil
+        centeredBackground.image = nil
+        bottomBackground.image = nil
+        fullscreenBackground.image = nil
         
-        if let temperatureUnit = weatherData.temperatureUnit {
-            let attributedString = NSMutableAttributedString(string: "Cº/ Fº", attributes: [
-                .font: UIFont.dynamicCustomFont(for: .headline),
-                .foregroundColor: UIColor(named: "whiteSubtle")!,
-                .kern: 0.84
-                ])
-            
-            switch temperatureUnit {
-            case .fahrenheit:
-                attributedString.addAttributes([
-                    .foregroundColor: UIColor.white
-                    ], range: NSRange(location: 4, length: 2))
-            case .celcius:
-                attributedString.addAttributes([
-                    .foregroundColor: UIColor.white
-                    ], range: NSRange(location: 0, length: 2))
-            }
-            
-            unitToggle.setAttributedTitle(attributedString, for: .normal)
-            unitToggle.titleLabel?.adjustsFontForContentSizeCategory = true
-        }
+        // Reset constraints
+        fullWidthCenteredBackgroundConstraint.isActive = false
+        proportionalCenteredBackgroundConstraint.isActive = true
+        centeredBackground.contentMode = .scaleAspectFit
         
-        if let icon = weatherData.icon {
-            // Clear background images
-            topBackground.image = nil
-            centeredBackground.image = nil
-            bottomBackground.image = nil
-            fullscreenBackground.image = nil
-            
-            // Reset constraints
-            fullWidthCenteredBackgroundConstraint.isActive = false
-            proportionalCenteredBackgroundConstraint.isActive = true
-            centeredBackground.contentMode = .scaleAspectFit
-            
-            // Enable swipe gestures
-            swipeUp.isEnabled = true
-            swipeLeft.isEnabled = true
-            
-            // Set background based on weather icon
-            switch icon {
-            case "clear-day":
+        // Enable swipe gestures
+        swipeUp.isEnabled = true
+        swipeLeft.isEnabled = true
+        
+        // Set background based on weather condition
+        switch currentWeather.condition {
+        case .clear, .hot:
+            if daytime {
                 gradientView.firstColor = UIColor(named: "dayLight")
                 gradientView.secondColor = UIColor(named: "dayDark")
                 bottomBackground.image = UIImage(named: "bg-clear")
-            case "clear-night":
+            } else {
                 gradientView.firstColor = UIColor(named: "nightLight")
                 gradientView.secondColor = UIColor(named: "nightDark")
                 bottomBackground.image = UIImage(named: "bg-clear")
-            case "wind":
+            }
+        case .windy, .breezy, .blowingDust:
+            gradientView.firstColor = UIColor(named: "dayLight")
+            gradientView.secondColor = UIColor(named: "dayDark")
+            centeredBackground.image = UIImage(named: "bg-wind")
+            proportionalCenteredBackgroundConstraint.isActive = false
+            fullWidthCenteredBackgroundConstraint.isActive = true
+        case .foggy, .haze, .smoky, .frigid:
+            gradientView.firstColor = UIColor(named: "neutralLight")
+            gradientView.secondColor = UIColor(named: "neutralDark")
+            fullscreenBackground.image = UIImage(named: "bg-fog")
+        case .partlyCloudy, .mostlyClear:
+            if daytime {
                 gradientView.firstColor = UIColor(named: "dayLight")
-                gradientView.secondColor = UIColor(named: "dayDark")
-                centeredBackground.image = UIImage(named: "bg-wind")
+                gradientView.secondColor = UIColor(named: "cloudyDark")
+                topBackground.image = UIImage(named: "bg-partly-cloudy")
+            } else {
+                gradientView.firstColor = UIColor(named: "nightLight")
+                gradientView.secondColor = UIColor(named: "nightDark")
+                topBackground.image = UIImage(named: "bg-partly-cloudy")
+            }
+        case .tropicalStorm, .hurricane:
+            gradientView.firstColor = UIColor(named: "neutralLight")
+            gradientView.secondColor = UIColor(named: "neutralDark")
+            fullscreenBackground.image = UIImage(named: "bg-tornado")
+        default:
+            // Cloudy, rain, snow, sleet, hail, thunderstorm
+            gradientView.firstColor = UIColor(named: "cloudyLight")
+            gradientView.secondColor = UIColor(named: "cloudyDark")
+            topBackground.image = UIImage(named: "bg-clouds")
+            
+            switch currentWeather.condition {
+            case .rain, .heavyRain, .sunShowers, .drizzle, .freezingDrizzle:
+                centeredBackground.image = UIImage(named: "bg-rain")
+            case .snow, .heavySnow, .flurries, .sunFlurries, .blowingSnow, .blizzard:
+                centeredBackground.image = UIImage(named: "bg-snow")
+            case .sleet, .wintryMix:
+                centeredBackground.image = UIImage(named: "bg-sleet")
+            case .hail, .freezingRain:
+                centeredBackground.image = UIImage(named: "bg-hail")
+            case .thunderstorms, .isolatedThunderstorms, .scatteredThunderstorms, .strongStorms:
+                centeredBackground.image = UIImage(named: "bg-lightning")
+                centeredBackground.contentMode = .scaleAspectFill
                 proportionalCenteredBackgroundConstraint.isActive = false
                 fullWidthCenteredBackgroundConstraint.isActive = true
-            case "fog":
-                gradientView.firstColor = UIColor(named: "neutralLight")
-                gradientView.secondColor = UIColor(named: "neutralDark")
-                fullscreenBackground.image = UIImage(named: "bg-fog")
-            case "partly-cloudy-day":
-                gradientView.firstColor = UIColor(named: "dayLight")
-                gradientView.secondColor = UIColor(named: "cloudyDark")
-                topBackground.image = UIImage(named: "bg-partly-cloudy")
-            case "partly-cloudy-night":
-                gradientView.firstColor = UIColor(named: "nightLight")
-                gradientView.secondColor = UIColor(named: "nightDark")
-                topBackground.image = UIImage(named: "bg-partly-cloudy")
-            case "tornado":
-                gradientView.firstColor = UIColor(named: "neutralLight")
-                gradientView.secondColor = UIColor(named: "neutralDark")
-                fullscreenBackground.image = UIImage(named: "bg-tornado")
             default:
-                // Cloudy, rain, snow, sleet, hail, thunderstorm
-                gradientView.firstColor = UIColor(named: "cloudyLight")
-                gradientView.secondColor = UIColor(named: "cloudyDark")
-                topBackground.image = UIImage(named: "bg-clouds")
-                
-                if icon == "rain" {
-                    centeredBackground.image = UIImage(named: "bg-rain")
-                } else if icon == "snow" {
-                    centeredBackground.image = UIImage(named: "bg-snow")
-                } else if icon == "sleet" {
-                    centeredBackground.image = UIImage(named: "bg-sleet")
-                } else if icon == "hail" {
-                    centeredBackground.image = UIImage(named: "bg-hail")
-                } else if icon == "thunderstorm" {
-                    centeredBackground.image = UIImage(named: "bg-lightning")
-                    centeredBackground.contentMode = .scaleAspectFill
-                    proportionalCenteredBackgroundConstraint.isActive = false
-                    fullWidthCenteredBackgroundConstraint.isActive = true
-                }
+                break
             }
         }
     }
@@ -485,7 +415,8 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate {
         // If going to RobotViewController
         if let destination = segue.destination as? RobotViewController {
             // Set answer
-            let answer = Answer(icon: weatherData.icon!, moonPhase: weatherData.moonPhase!)
+            
+            let answer = Answer(weather: weather, daytime: daytime)
             destination.willRobotsTakeOver = answer
             
             // Set animations

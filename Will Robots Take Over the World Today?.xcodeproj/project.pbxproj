@@ -15,10 +15,8 @@
 		0523FCB92223395100EFC49C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0523FCB72223395100EFC49C /* LaunchScreen.storyboard */; };
 		055758B4224578F30043ABEB /* UIFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055758B3224578F30043ABEB /* UIFontExtensions.swift */; };
 		056166E222399EAC00E07955 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056166E122399EAC00E07955 /* LoadingViewController.swift */; };
-		056166E42239A01900E07955 /* LocationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056166E32239A01900E07955 /* LocationServices.swift */; };
 		05B4CFB42227C4360089BCC2 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05B4CFB32227C4360089BCC2 /* Cabin-Regular.ttf */; };
 		05CF436D22419059007FB5A5 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF436C22419059007FB5A5 /* UILabelExtensions.swift */; };
-		05E9F29C222A19A100BFC173 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E9F29B222A19A100BFC173 /* WeatherData.swift */; };
 		05E9F2A2222A1AD400BFC173 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E9F2A1222A1AD400BFC173 /* GradientView.swift */; };
 		05FB314A223631EB00E7674D /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB3149223631EB00E7674D /* UIViewExtensions.swift */; };
 		05FE2AC6222DDACF00CD5DED /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FE2AC5222DDACF00CD5DED /* Answer.swift */; };
@@ -28,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		0517B964222DBA670004ACF1 /* RobotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotViewController.swift; sourceTree = "<group>"; };
+		05208DD92A50DD8A00DE2CE7 /* Will Robots Take Over the World Today?.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Will Robots Take Over the World Today?.entitlements"; sourceTree = "<group>"; };
 		0523FCAB2223395000EFC49C /* Will Robots Take Over the World Today?.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Will Robots Take Over the World Today?.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0523FCAE2223395000EFC49C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0523FCB02223395000EFC49C /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
@@ -37,10 +36,8 @@
 		0523FCBA2223395100EFC49C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		055758B3224578F30043ABEB /* UIFontExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtensions.swift; sourceTree = "<group>"; };
 		056166E122399EAC00E07955 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
-		056166E32239A01900E07955 /* LocationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServices.swift; sourceTree = "<group>"; };
 		05B4CFB32227C4360089BCC2 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
 		05CF436C22419059007FB5A5 /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
-		05E9F29B222A19A100BFC173 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		05E9F2A1222A1AD400BFC173 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		05FB3149223631EB00E7674D /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		05FE2AC5222DDACF00CD5DED /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
@@ -100,6 +97,7 @@
 				0523FCB52223395100EFC49C /* Assets.xcassets */,
 				0523FCB72223395100EFC49C /* LaunchScreen.storyboard */,
 				0523FCBA2223395100EFC49C /* Info.plist */,
+				05208DD92A50DD8A00DE2CE7 /* Will Robots Take Over the World Today?.entitlements */,
 				0505050D226D7BFD0064C167 /* Fonts */,
 			);
 			path = "Will Robots Take Over the World Today?";
@@ -120,9 +118,7 @@
 		05E9F29F222A1A6600BFC173 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				05E9F29B222A19A100BFC173 /* WeatherData.swift */,
 				05FE2AC5222DDACF00CD5DED /* Answer.swift */,
-				056166E32239A01900E07955 /* LocationServices.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -286,8 +282,6 @@
 				05FE2AC6222DDACF00CD5DED /* Answer.swift in Sources */,
 				05CF436D22419059007FB5A5 /* UILabelExtensions.swift in Sources */,
 				0517B965222DBA670004ACF1 /* RobotViewController.swift in Sources */,
-				056166E42239A01900E07955 /* LocationServices.swift in Sources */,
-				05E9F29C222A19A100BFC173 /* WeatherData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +428,7 @@
 			baseConfigurationReference = AFE4C2357189BBEFEE678E1D /* Pods-Will Robots Take Over the World Today?.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Will Robots Take Over the World Today?/Will Robots Take Over the World Today?.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
@@ -458,6 +453,7 @@
 			baseConfigurationReference = 0C235A6275DD8078FE120980 /* Pods-Will Robots Take Over the World Today?.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Will Robots Take Over the World Today?/Will Robots Take Over the World Today?.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;

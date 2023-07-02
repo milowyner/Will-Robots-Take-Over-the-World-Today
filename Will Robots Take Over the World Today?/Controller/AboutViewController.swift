@@ -49,7 +49,7 @@ class AboutViewController: UIViewController {
     
 
     @IBAction func darkSkyButtonPressed(_ sender: UIButton) {
-        UIApplication.shared.open(URL(string: "https://darksky.net/poweredby/")!)
+        UIApplication.shared.open(URL(string: "https://developer.apple.com/weatherkit/data-source-attribution/")!)
     }
     
     

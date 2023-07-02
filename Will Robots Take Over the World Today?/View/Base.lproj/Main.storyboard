@@ -228,7 +228,7 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="K5k-ZN-jjw" userLabel="Nearest Storm">
+                                                    <stackView opaque="NO" alpha="0.0" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="K5k-ZN-jjw" userLabel="Nearest Storm">
                                                         <rect key="frame" x="210.5" y="0.0" width="61.5" height="73"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="NEAREST STORM" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="an7-0R-hLS">
@@ -467,18 +467,18 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Dlk-DZ-Xcl" userLabel="Powered by DarkSky">
-                                                <rect key="frame" x="174" y="92" width="98" height="64.5"/>
+                                                <rect key="frame" x="142" y="92" width="130" height="64.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="POWERED BY" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fpc-cB-F1j">
-                                                        <rect key="frame" x="0.0" y="0.0" width="98" height="17.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="130" height="17.5"/>
                                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                                         <color key="textColor" name="white"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VTs-9H-6cV">
-                                                        <rect key="frame" x="0.0" y="17.5" width="98" height="47"/>
+                                                        <rect key="frame" x="0.0" y="17.5" width="130" height="47"/>
                                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="28"/>
-                                                        <state key="normal" title="DarkSky">
+                                                        <state key="normal" title=" Weather">
                                                             <color key="titleColor" name="white"/>
                                                         </state>
                                                         <connections>
@@ -496,7 +496,6 @@
                                             <color key="titleColor" name="white"/>
                                         </state>
                                         <connections>
-                                            <action selector="darkSkyButtonPressed:" destination="3Dd-TO-CO4" eventType="touchUpInside" id="W84-Xp-Z7u"/>
                                             <action selector="privacyPolicyButtonPressed:" destination="3Dd-TO-CO4" eventType="touchUpInside" id="4IX-MR-sye"/>
                                         </connections>
                                     </button>

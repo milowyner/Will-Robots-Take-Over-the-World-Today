@@ -8,7 +8,6 @@
 
 import UIKit
 import Alamofire
-import SwiftyJSON
 import Hero
 import CoreLocation
 import WeatherKit
